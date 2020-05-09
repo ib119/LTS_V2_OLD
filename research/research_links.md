@@ -34,3 +34,11 @@ Easy to understand mathematical explanation of Newton-Raphson method
 Explains how source files work for spice files
 
 <https://www.cpp.edu/~prnelson/courses/ece220/220-spice-notes.pdf>
+
+---
+
+## Techniques for circuit simulation
+Tons of information about circuit simulation in lecture slide format. Start reading from pdf page 37 (Or skip further as MNA is explained better in link above). Also ignore STA analysis as it is less efficient than MNA.
+Goes through topics such as Newton-Raphson method for non-linear components and transient analysis with capacitors.
+
+<https://www.ee.iitb.ac.in/~sequel/circuit_sim_1.pdf>
