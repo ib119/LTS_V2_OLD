@@ -3,7 +3,7 @@
 ## “SPICE algorithms and internals” by Paul D. Mitcheson
 Basic/easy to understand introduction how SPICE works through conduction matrices and Newton-Raphson method.
 
-<http://www3.imperial.ac.uk/pls/portallive/docs/1/7292571.PDF>
+<http://www3.imperial.ac.uk/pls/portallive/docs/1/56133736.PDF>
 
 ---
 
