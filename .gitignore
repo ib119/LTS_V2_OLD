@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+# LTSpice
+*.log
+*.raw
+*.fft
+*.net
+
+# Visual Studio
+*.opendb
+*.vscode
