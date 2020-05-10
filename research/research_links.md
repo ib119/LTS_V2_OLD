@@ -55,5 +55,5 @@ The results look very promising (comparison with LTSpice transient simulation). 
 ## A Study of Numerical Integration Techniques for use in the Companion Circuit Method of Transient Circuit Analysis
 Harder to understand but more detailed than eCircuit page above. Also seems like a good source to use.
 Includes companion circuit models produced by different integration techniques. Also gives a detailed comparison of integration techniques (Will need to justify why we choose a particular one).
-Page 34/35 (pdf) gives the backward-Euler companion circuit for an inductor (eCircuit only gave the one for a capacitor).
+Page 27 (pdf page 37) gives the backward-Euler companion circuit for an inductor (eCircuit only gave the one for a capacitor). On this page, there are also all kinds of other companion circuits.
 <https://docs.lib.purdue.edu/cgi/viewcontent.cgi?article=1301&context=ecetr>
