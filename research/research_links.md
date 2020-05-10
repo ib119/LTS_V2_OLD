@@ -42,3 +42,10 @@ Tons of information about circuit simulation in lecture slide format. Start read
 Goes through topics such as Newton-Raphson method for non-linear components and transient analysis with capacitors.
 
 <https://www.ee.iitb.ac.in/~sequel/circuit_sim_1.pdf>
+
+---
+
+## Transient Analysis (eCircuit)
+Very basic and simply to understand explanation how to use backward-Euler and MNA to perform transient analysis. This avoids the having to solve differential equations and is similar to how SPICE does it (probably a little simplified).
+The results look very promising (comparison with LTSpice transient simulation). A screenshot of the comparison is provided in the research folder.
+<http://www.ecircuitcenter.com/SpiceTopics/Transient%20Analysis/Transient%20Analysis.htm>
