@@ -49,3 +49,11 @@ Goes through topics such as Newton-Raphson method for non-linear components and 
 Very basic and simply to understand explanation how to use backward-Euler and MNA to perform transient analysis. This avoids the having to solve differential equations and is similar to how SPICE does it (probably a little simplified).
 The results look very promising (comparison with LTSpice transient simulation). A screenshot of the comparison is provided in the research folder.
 <http://www.ecircuitcenter.com/SpiceTopics/Transient%20Analysis/Transient%20Analysis.htm>
+
+---
+
+## A Study of Numerical Integration Techniques for use in the Companion Circuit Method of Transient Circuit Analysis
+Harder to understand but more detailed than eCircuit page above. Also seems like a good source to use.
+Includes companion circuit models produced by different integration techniques. Also gives a detailed comparison of integration techniques (Will need to justify why we choose a particular one).
+Page 34/35 (pdf) gives the backward-Euler companion circuit for an inductor (eCircuit only gave the one for a capacitor).
+<https://docs.lib.purdue.edu/cgi/viewcontent.cgi?article=1301&context=ecetr>
