@@ -12,6 +12,8 @@ private:
     vector<Component*> voltageSources{};
     vector<Component*> currentSources{};
     vector<Component*> cunductanceSources{};
+    float time;
+    float timeStep;
     // matrix A;
     // matrix A_inv or LU_decomposition;
     // matrix B;
@@ -22,10 +24,13 @@ public:
     ~Circuit();
 
     // operator overload to add ability to read from iostream to set up circuit
-    iostream operator<<(iostream input);
+    void operator<<(iostream input);
 
     // operation to solve for a given state
-    // matrix solve_for_time(float t);
+    // matrix solve_for_time(float time_step);
+
+    // operation to update circuit based on values calculated
+    // void update_from_solve(float )
 
     // operation to create A
     void setupA();
