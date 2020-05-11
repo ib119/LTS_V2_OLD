@@ -1,23 +1,26 @@
 #include <iostream>
 #include <vector>
+#include <memory>
+#include <Eigen/Dense>
 
 #include "component.hpp"
 
 using namespace std;
+using namespace Eigen;
 
 class Circuit
 {
 private:
-    vector<Component*> components{}; // not sure if we necesarily need this one
-    vector<Component*> voltageSources{};
-    vector<Component*> currentSources{};
-    vector<Component*> cunductanceSources{};
+    vector<unique_ptr<Component>> components{}; // not sure if we necesarily need this one
+    vector<unique_ptr<Component>> voltageSources{};
+    vector<unique_ptr<Component>> currentSources{};
+    vector<unique_ptr<Component>> cunductanceSources{};
     float time;
     float timeStep;
-    // matrix A;
-    // matrix A_inv or LU_decomposition;
-    // matrix B;
-    // matrix x;
+    MatrixXd A;
+    MatrixXd A_inv;
+    VectorXd b;
+    VectorXd x;
 public:
     // default constructor for initializing empty object
     Circuit();
