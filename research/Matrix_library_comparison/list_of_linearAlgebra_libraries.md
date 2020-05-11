@@ -7,6 +7,10 @@
 Main website + documentation:
 <http://arma.sourceforge.net/>
 
+**Important:**
+- "As Armadillo is a template library, we strongly recommend to enable optimisation when compiling programs (eg. when compiling with GCC or clang, use the -O2 or -O3 options)"
+e.g. => g++ example.cpp -o example -O2 -larmadillo
+- https://stackoverflow.com/questions/17940721/armadillo-c-lu-decomposition
 ---
 
 ## Eigen 3
