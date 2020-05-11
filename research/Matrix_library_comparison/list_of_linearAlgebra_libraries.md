@@ -40,3 +40,5 @@ Documentation:
 ## Comparison Armadillo and Eigen3
 - Armadillo has cleaner syntax and is easier to use
 - Both are very commonly used and hence have lots of documentation and support available
+- Armadillo's fastest method for solving = LU Decomposition
+- Eigen3's fastest method for solving = Inverse Method
