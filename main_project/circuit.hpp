@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <memory>
 #include <Eigen/Dense>
 
 #include "component.hpp"
@@ -10,10 +11,10 @@ using namespace Eigen;
 class Circuit
 {
 private:
-    vector<Component*> components{}; // not sure if we necesarily need this one
-    vector<Component*> voltageSources{};
-    vector<Component*> currentSources{};
-    vector<Component*> cunductanceSources{};
+    vector<unique_ptr<Component>> components{}; // not sure if we necesarily need this one
+    vector<unique_ptr<Component>> voltageSources{};
+    vector<unique_ptr<Component>> currentSources{};
+    vector<unique_ptr<Component>> cunductanceSources{};
     float time;
     float timeStep;
     MatrixXd A;
