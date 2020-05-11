@@ -9,3 +9,11 @@ Resistor::Resistor(float r, int n1, int n2){
 float Resistor::getConductance(int node){
     return conductance;
 }
+
+//resistor is a two terminal device that has two nodes
+vector<int> Resistor::getNodes(){
+    vector<int> res{};
+    res.push_back(nodes.at(0));
+    res.push_back(nodes.at(1));
+    return res;
+}

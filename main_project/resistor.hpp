@@ -9,5 +9,6 @@ public:
     Resistor(float r, int n1, int n2);
     ~Resistor();
 
-    float getConductance(int node);
+    float getConductance(int node) override;
+    vector<int> getNodes() override;
 };
