@@ -1,9 +1,11 @@
 #include <iostream>
 #include <vector>
+#include <Eigen/Dense>
 
 #include "component.hpp"
 
 using namespace std;
+using namespace Eigen;
 
 class Circuit
 {
@@ -14,10 +16,10 @@ private:
     vector<Component*> cunductanceSources{};
     float time;
     float timeStep;
-    // matrix A;
-    // matrix A_inv or LU_decomposition;
-    // matrix B;
-    // matrix x;
+    MatrixXd A;
+    MatrixXd A_inv;
+    VectorXd b;
+    VectorXd x;
 public:
     // default constructor for initializing empty object
     Circuit();

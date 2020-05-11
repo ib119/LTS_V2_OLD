@@ -9,7 +9,7 @@ protected:
     int subComponents;
 public:
     Component();
-    ~Component();
+    virtual ~Component() = 0; //destructor of base class should be virtual (purely virtual as component should be abstract)
 
     virtual float getConductance(int node);
     virtual float getVoltage(int node);
