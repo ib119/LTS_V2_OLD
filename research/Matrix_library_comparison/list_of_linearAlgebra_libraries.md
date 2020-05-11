@@ -12,6 +12,9 @@ Main website + documentation:
 e.g. => *g++ example.cpp -o example -O2 -larmadillo*
 - Insert *#define ARMA_NO_DEBUG* at top of program once everything is tested to maximize speed (e.g. disables bound checking)
 - https://stackoverflow.com/questions/17940721/armadillo-c-lu-decomposition
+
+**Most efficient method for A*x=b solving in library:**
+- LU decomposition as used in ArmadilloSelfTest, test3
 ---
 
 ## Eigen 3
