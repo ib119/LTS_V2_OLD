@@ -42,3 +42,5 @@ Documentation:
 - Both are very commonly used and hence have lots of documentation and support available
 - Armadillo's fastest method for solving = LU Decomposition
 - Eigen3's fastest method for solving = Inverse Method
+- When comparing Armadillo and Eigen using the same system, Eigen was about 10x faster than Armadillo (6x6 matrix and one million iterations) and also more accurate when compared with MATLAB's solution
+=> **Eigen3 wins over Armadillo and will be used in LTS_V2**
