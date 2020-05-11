@@ -10,8 +10,8 @@ using namespace arma;
 */
 int main()
 {
-    sp_mat A1 = sprandu<sp_mat>(1000, 1000, 0.1);
-    mat A = mat(A1);
+    sp_mat As = sprandu<sp_mat>(1000, 1000, 0.1);
+    mat A = mat(As);
     vec b = randu<vec>(1000);
     // mat B = randu<mat>(1000, 5);
 
@@ -21,7 +21,7 @@ int main()
     auto start = high_resolution_clock::now();
     for (long i; i < 100; i++)
     {
-        spsolve(x, A1, b, "lapack"); // use LAPACK  solver
+        spsolve(x, As, b, "lapack"); // use LAPACK  solver
     }
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
@@ -33,7 +33,7 @@ int main()
     start = high_resolution_clock::now();
     for (long i; i < 100; i++)
     {
-        spsolve(x, A1, b, "superlu"); // use SuperLU solver
+        spsolve(x, As, b, "superlu"); // use SuperLU solver
     }
     stop = high_resolution_clock::now();
     duration = duration_cast<microseconds>(stop - start);
