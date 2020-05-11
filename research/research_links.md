@@ -57,3 +57,9 @@ Harder to understand but more detailed than eCircuit page above. Also seems like
 Includes companion circuit models produced by different integration techniques. Also gives a detailed comparison of integration techniques (Will need to justify why we choose a particular one).
 Page 27 (pdf page 37) gives the backward-Euler companion circuit for an inductor (eCircuit only gave the one for a capacitor). On this page, there are also all kinds of other companion circuits.
 <https://docs.lib.purdue.edu/cgi/viewcontent.cgi?article=1301&context=ecetr>
+
+---
+
+## Inside Spice
+A good book that explains methods used in SPICE. Especially useful for Newton-Raphson with non-linear components and for dynamic time step control (could be added in end if want greater accuracy while being fast).
+<https://idoc.pub/download/kielkowski-inside-spice-d2nv6ogoxy4k>
