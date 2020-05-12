@@ -41,6 +41,8 @@ public:
     // input helper functions
     float getValue(string val);
     Component* setUpResistor(string arg, iostream& file);
+    Component* setUpVoltageSource(string arg, iostream& file);
+    Component* setUpCurrentSource(string arg, iostream& file);
 
     // operation to solve for a given state
     // matrix solve_for_time(float time_step);
@@ -50,9 +52,11 @@ public:
 
     // operation to create A
     void setupA();
+    MatrixXf getA();
 
     // operation to adjust B
     void adjustB();
+    MatrixXf getB();
 };
 
 #endif

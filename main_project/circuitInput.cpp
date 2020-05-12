@@ -25,6 +25,12 @@ void Circuit::operator<<(iostream& file){
 		if(compType == "R" || compType == "r"){
 			newComp = setUpResistor(arg, file);
 			conductanceSources.push_back(newComp);
+		}else if(compType == "V" || compType == "v"){
+			newComp = setUpVoltageSource(arg, file);
+			voltageSources.push_back(newComp);
+		}else if(compType == "I" || compType == "i"){
+			newComp = setUpCurrentSource(arg, file);
+			currentSources.push_back(newComp);
 		}
 		components.push_back(newComp);
 		// if arg = ... compare untill you reach End statement then quit loop
@@ -101,6 +107,44 @@ Component* Circuit::setUpResistor(string arg, iostream& file){
 	int n2 = stoi(arg);
 	file >> arg;
 	float val = getValue(arg);
+
+	if(n1 > highestNodeNumber) highestNodeNumber = n1;
+	if(n2 > highestNodeNumber) highestNodeNumber = n2;
+	
 	Resistor* out = new Resistor(name, val, n1, n2);
+	return out;
+}
+
+// helper function to setup up resistor from specific inputs
+Component* Circuit::setUpVoltageSource(string arg, iostream& file){
+	string name = arg.substr(1, arg.size()-1);
+	file >> arg;
+	int n1 = stoi(arg);
+	file >> arg;
+	int n2 = stoi(arg);
+	file >> arg;
+	float val = getValue(arg);
+
+	if(n1 > highestNodeNumber) highestNodeNumber = n1;
+	if(n2 > highestNodeNumber) highestNodeNumber = n2;
+	
+	VoltageSource* out = new VoltageSource(name, val, n1, n2);
+	return out;
+}
+
+// helper function to setup up resistor from specific inputs
+Component* Circuit::setUpCurrentSource(string arg, iostream& file){
+	string name = arg.substr(1, arg.size()-1);
+	file >> arg;
+	int n1 = stoi(arg);
+	file >> arg;
+	int n2 = stoi(arg);
+	file >> arg;
+	float val = getValue(arg);
+
+	if(n1 > highestNodeNumber) highestNodeNumber = n1;
+	if(n2 > highestNodeNumber) highestNodeNumber = n2;
+	
+	CurrentSource* out = new CurrentSource(name, val, n1, n2);
 	return out;
 }
