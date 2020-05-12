@@ -9,6 +9,6 @@ public:
     VoltageSource(float _voltage, int n1, int n2);
     ~VoltageSource() = default;
 
-    float getVoltage(int node) override;
+    float getVoltage() override;
     vector<int> getNodes() override;
 };

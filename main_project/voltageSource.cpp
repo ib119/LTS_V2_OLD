@@ -7,7 +7,7 @@ VoltageSource::VoltageSource(float _voltage, int n1, int n2)
     nodes.push_back(n2);
 }
 
-float VoltageSource::getVoltage(int node){
+float VoltageSource::getVoltage(){
     return voltage;
 }
 
