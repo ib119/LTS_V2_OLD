@@ -2,6 +2,7 @@
 #define RESISTOR_HPP
 
 #include <vector>
+#include <string>
 
 #include "component.hpp"
 
@@ -9,8 +10,8 @@ class Resistor: public Component{
 private:
     float conductance;
 public:
-    Resistor(float r, int n1, int n2);
-    ~Resistor() = default;
+    Resistor(string name, float r, int n1, int n2);
+    ~Resistor();
 
     float getConductance() override;
     vector<int> getNodes() override;
