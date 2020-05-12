@@ -43,8 +43,8 @@ void Circuit::setupA(){
         }
 
         // code for debugging changes in A per itteration
-        // IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
-        // cout << A.format(CleanFmt) << endl << endl;
+        IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
+        cout << A.format(CleanFmt) << endl << endl;
     }
 
     //voltage part
@@ -54,13 +54,22 @@ void Circuit::setupA(){
         const int node1 = nodes.at(0);
         const int node2 = nodes.at(1);
 
-        A(node1-1,highestNodeNumber+i) = 1;
-        A(highestNodeNumber+i,node1-1) = 1; //different when dealing with dependent sources
+        // I think we should consider the look at node functionallity so taht we can also implement this as a loop like above
+        // for now the easiest thing to do is just write to if statements, given our current structure
+        // I think the look at function would also help with the dependant sources problem with this implementation
+        if(node1 != 0){
+            A(node1-1,highestNodeNumber+i) = 1;
+            A(highestNodeNumber+i,node1-1) = 1; //different when dealing with dependent sources
+        }
         
         if(node2 != 0){
             A(node2-1,highestNodeNumber+i) = -1;
             A(highestNodeNumber+i,node2-1) = -1; //different when dealing with dependent sources
         }
+
+        // code for debugging changes in A per itteration
+        IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
+        cout << A.format(CleanFmt) << endl << endl;
     }
 }
 
@@ -77,11 +86,15 @@ void Circuit::adjustB(){
         vector<int> nodes = cSource->getNodes();
         const int node1 = nodes.at(0);
         const int node2 = nodes.at(1);
-        b(node1-1) += cSource->getCurrent();
 
-        if(node2 != 0){
-            b(node2-1) += -cSource->getCurrent();
-        }
+        // same suggestion as above, would make the whole code base more flexible to new componetns
+        if(node1 != 0) b(node1-1) += cSource->getCurrent();
+
+        if(node2 != 0) b(node2-1) -= cSource->getCurrent();
+
+        // code for debugging changes in A per itteration
+        IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
+        cout << A.format(CleanFmt) << endl << endl;
     }
 
     //adding voltages
