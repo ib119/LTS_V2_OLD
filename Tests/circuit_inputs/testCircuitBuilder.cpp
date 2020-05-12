@@ -28,12 +28,21 @@ void onlyResistors(stringstream& buffer){
     buffer << "r4 3 0 4" << endl;
 }
 
-void onlyCurrentSources(){
-
+// obviously going to spount nonsne since this circuit makes no sense
+void onlyVoltageSources(stringstream& buffer){
+    buffer << "OnlyResistors" << endl;
+    buffer << "V1 0 1 1" << endl;
+    buffer << "V2 1 2 2" << endl;
+    buffer << "V3 2 3 3" << endl;
+    buffer << "V4 3 0 4" << endl;
 }
 
-void onlyVoltageSources(){
-
+void onlyCurrentSources(stringstream& buffer){
+    buffer << "OnlyResistors" << endl;
+    buffer << "I1 0 1 1" << endl;
+    buffer << "I2 1 2 2" << endl;
+    buffer << "I3 2 3 3" << endl;
+    buffer << "I4 3 0 4" << endl;
 }
 
 void exampleCircuit1(stringstream& buffer){
@@ -45,9 +54,16 @@ void exampleCircuit1(stringstream& buffer){
     buffer << "Is 2 0 2" << endl;
 }
 
+void exampleCircuit2(stringstream& buffer){
+    buffer << "ExampleCircuit2" << endl;
+    buffer << "V1 0 1 1" << endl;
+    buffer << "V2 2 0 2" << endl;
+    buffer << "R3 1 2 3k" << endl;
+}
+
 int main(){
     stringstream buffer;
-    exampleCircuit1(buffer);
+    exampleCircuit2(buffer);
 
     Circuit c{};
 
@@ -65,5 +81,6 @@ int main(){
 
     IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
     cout << A.format(CleanFmt) << endl << endl;
-    cout << b.format(CleanFmt) << endl;
+    cout << b.format(CleanFmt) << endl << endl;
+    cout << (A*b).format(CleanFmt) << endl;
 }
