@@ -9,11 +9,11 @@ class CurrentSource: public Component{
 private:
     float current;
 public:
-    CurrentSource(float _current, int n1, int n2);
+    CurrentSource(string _name, float _current, int n1, int n2);
     ~CurrentSource() = default;
 
-    float getCurrent() override;
-    vector<int> getNodes() override;
+    float getCurrent() const override;
+    vector<int> getNodes() const override;
 };
 
 #endif
