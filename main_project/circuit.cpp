@@ -42,8 +42,8 @@ void Circuit::setupA(){
 
         if(node2 != 0){
             A(node2-1,node2-1) += conductance;
-            A(node1-1,node2-1) = -conductance;
-            A(node2-1,node1-1) = -conductance;
+            A(node1-1,node2-1) -= conductance;
+            A(node2-1,node1-1) -= conductance;
         }
     }
 
