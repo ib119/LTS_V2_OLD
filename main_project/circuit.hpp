@@ -18,6 +18,7 @@ private:
     int highestNodeNumber; //more efficient to keep updating when parsing netlist (otherwise have to iterate through all components again)
     float time;
     float timeStep;
+    bool hasNonLinear;
     MatrixXf A;
     MatrixXf A_inv;
     VectorXf b;

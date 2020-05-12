@@ -9,6 +9,6 @@ public:
     CurrentSource(float _current, int n1, int n2);
     ~CurrentSource() = default;
 
-    float getCurrent(int node) override;
+    float getCurrent() override;
     vector<int> getNodes() override;
 };

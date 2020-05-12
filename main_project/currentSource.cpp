@@ -7,7 +7,7 @@ CurrentSource::CurrentSource(float _current, int n1, int n2)
     nodes.push_back(n2);
 }
 
-float CurrentSource::getCurrent(int node){
+float CurrentSource::getCurrent(){
     return current;
 }
 

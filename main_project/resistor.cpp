@@ -6,7 +6,7 @@ Resistor::Resistor(float r, int n1, int n2){
     nodes.push_back(n2);
 }
 
-float Resistor::getConductance(int node){
+float Resistor::getConductance(){
     return conductance;
 }
 
