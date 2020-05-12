@@ -1,3 +1,6 @@
+#ifndef CIRCUIT_H
+#define CIRCUIT_H
+
 #include <iostream>
 #include <vector>
 #include <memory>
@@ -36,8 +39,8 @@ public:
     // operator overload to add ability to read from iostream to set up circuit
     void operator<<(iostream& input);
     // input helper functions
-    float Circuit::getValue(string val);
-    Resistor* Circuit::setUpResistor(string arg, iostream& file);
+    float getValue(string val);
+    Component* setUpResistor(string arg, iostream& file);
 
     // operation to solve for a given state
     // matrix solve_for_time(float time_step);
@@ -51,3 +54,5 @@ public:
     // operation to adjust B
     void adjustB();
 };
+
+#endif

@@ -18,7 +18,7 @@ void Circuit::operator<<(iostream& file){
 	getline(file, title);
 	string arg{};
 
-	Component* newComp{};
+	Component* newComp;
 	string compType{};
 	while(file >> arg){
 		compType = arg[0];
@@ -93,7 +93,7 @@ float Circuit::getValue(string val){
 
 
 // helper function to setup up resistor from specific inputs
-Resistor* Circuit::setUpResistor(string arg, iostream& file){
+Component* Circuit::setUpResistor(string arg, iostream& file){
 	string name = arg.substr(1, arg.size()-1);
 	file >> arg;
 	int n1 = stoi(arg);
@@ -101,5 +101,6 @@ Resistor* Circuit::setUpResistor(string arg, iostream& file){
 	int n2 = stoi(arg);
 	file >> arg;
 	float val = getValue(arg);
-	return new Resistor(name, val, n1, n2);
+	Resistor* out = new Resistor(name, val, n1, n2);
+	return out;
 }

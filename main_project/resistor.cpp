@@ -8,6 +8,10 @@ Resistor::Resistor(string name, float r, int n1, int n2){
     nodes.push_back(n2);
 }
 
+Resistor::~Resistor(){
+    
+}
+
 float Resistor::getConductance(){
     return conductance;
 }
