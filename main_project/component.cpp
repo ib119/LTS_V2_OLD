@@ -2,6 +2,7 @@
 
 using namespace std;
 
+Component::Component(){};
 Component::~Component() {}
 
 // these functions should by default return null unless overwritten by another child class down the line
@@ -20,5 +21,9 @@ float Component::getCurrent(){
 }
 
 float Component::getConductance(){
+    return NULL;
+}
+
+float Component::updateVals(float v){
     return NULL;
 }

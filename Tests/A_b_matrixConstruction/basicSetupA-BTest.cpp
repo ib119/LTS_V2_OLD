@@ -28,9 +28,12 @@ public:
         setVoltageSources();
         setCurrentSources();
         setConductanceSources();
+        highestNodeNumber = 2;
     }
 };
 
 int main(){
-    //to do
+    TestableCircuit circuit{};
+    circuit.setupA();
+    circuit.adjustB();
 }

@@ -10,7 +10,7 @@ private:
     float conductance;
 public:
     Resistor(float r, int n1, int n2);
-    ~Resistor();
+    ~Resistor() = default;
 
     float getConductance() override;
     vector<int> getNodes() override;
