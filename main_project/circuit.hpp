@@ -1,3 +1,6 @@
+#ifndef CIRCUIT_HPP
+#define CIRCUIT_HPP
+ 
 #include <iostream>
 #include <vector>
 #include <memory>
@@ -10,7 +13,7 @@ using namespace Eigen;
 
 class Circuit
 {
-private:
+private: //change back to private after testing
     vector<unique_ptr<Component>> components{}; // not sure if we necesarily need this one
     vector<unique_ptr<Component>> voltageSources{};
     vector<unique_ptr<Component>> currentSources{};
@@ -47,3 +50,5 @@ public:
     // operation to adjust B
     void adjustB();
 };
+
+#endif

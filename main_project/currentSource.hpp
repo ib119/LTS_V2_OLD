@@ -1,3 +1,6 @@
+#ifndef CURRENTESOURCE_HPP
+#define CURRENTESOURCE_HPP
+
 #include <vector>
 
 #include "component.hpp"
@@ -12,3 +15,5 @@ public:
     float getCurrent() override;
     vector<int> getNodes() override;
 };
+
+#endif
