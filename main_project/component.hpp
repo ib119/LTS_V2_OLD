@@ -18,6 +18,6 @@ public:
     
     virtual vector<int> getNodes() = 0;
 
-    // this should be used to update the value of the voltage accross a component after an iteration
-    virtual float updateVals(float v);
+    // this should be used to update the value of the voltage and current accross a component after an iteration
+    virtual void updateVals(float timeStep, int order) = 0;
 };
