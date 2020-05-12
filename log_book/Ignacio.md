@@ -21,3 +21,17 @@ In terms of capacitors and inductors we still have two main ideas about how we'r
 The main difference between the two methods is that one has "history" and "presets" stored in the circuit, whereas the other one stores them in the component.
 
 We also concluded that the library we would use for the matrix manipulation is Eigen as it provided evidence of being faster for our specific needs.
+
+## Third Call (13/05/2020)
+
+We opened the call talking more about the implenmentation of capacitors and inductors again. We decided to go with a method more similar to the second option as shown above. The reason for this was that it seemed to make more sense for the component to control it's own values. This would allow us to take a more general approach to how the circuit class deals with components, as the circuit would only have to know if the component acts as a current source, voltage source, conducnatnce source, or several of them. With this set up as such we can then let components dictate how they manage their values independantly.
+
+We also discuessd the method of development we are planning on taking. We think what we feel more comfortable with is AGILE development. Building something basic that works, and improvingit. Because of this we have already started considereng different areas our code structure that could be modified in future to add more functionality. We're also trying to take an approach which allows for scaling to be implmented with more ease.
+
+The tasks we are looking at in the near future is to complete the input system, the capacitor and inductor system, and the matrix system. After this we're planning on building a good testing structure before moving on to more complex tasks.
+
+One idea we were looking at for the future when condiering more complex components such as non-linear ones is how we are planning on implementing them. We have two main ideas moving forward.
+
+1) Implenting them using their IV characteristics and using Newton method to solve the simultaneous equationsof each equation of nodal analysis
+
+2) Using Newton method to find the operating point of a small signal equivalent model of each nonlinear component and then solving the system as a linear model
