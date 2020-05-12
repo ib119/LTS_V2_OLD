@@ -1,6 +1,8 @@
+#include <string>
+
 #include "currentSource.hpp"
 
-CurrentSource::CurrentSource(float _current, int n1, int n2)
+CurrentSource::CurrentSource(string name, float _current, int n1, int n2)
     :current{_current}{
 
     nodes.push_back(n1);

@@ -42,8 +42,9 @@ void Circuit::setupA(){
             }
         }
 
-        IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
-        cout << A.format(CleanFmt) << endl << endl;
+        // code for debugging changes in A per itteration
+        // IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
+        // cout << A.format(CleanFmt) << endl << endl;
     }
 
     //voltage part

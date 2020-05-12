@@ -1,6 +1,8 @@
+#include <string>
+
 #include "voltageSource.hpp"
 
-VoltageSource::VoltageSource(float _voltage, int n1, int n2)
+VoltageSource::VoltageSource(string name, float _voltage, int n1, int n2)
     :voltage{_voltage}{
 
     nodes.push_back(n1);
