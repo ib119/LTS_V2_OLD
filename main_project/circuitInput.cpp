@@ -101,6 +101,10 @@ Component* Circuit::setUpResistor(string arg, iostream& file){
 	int n2 = stoi(arg);
 	file >> arg;
 	float val = getValue(arg);
+
+	if(n1 > highestNodeNumber) highestNodeNumber = n1;
+	if(n2 > highestNodeNumber) highestNodeNumber = n2;
+	
 	Resistor* out = new Resistor(name, val, n1, n2);
 	return out;
 }

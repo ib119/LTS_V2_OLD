@@ -8,8 +8,9 @@ using namespace Eigen;
 
 Circuit::Circuit()
 {
-    float time = 0;
-    float timeStep = 0.1; // in seconds
+    time = 0;
+    timeStep = 0.1; // in seconds
+    highestNodeNumber = 0;
 }
 
 Circuit::~Circuit()
