@@ -1,3 +1,6 @@
+#ifndef RESISTOR_HPP
+#define RESISTOR_HPP
+
 #include <vector>
 
 #include "component.hpp"
@@ -12,3 +15,5 @@ public:
     float getConductance() override;
     vector<int> getNodes() override;
 };
+
+#endif

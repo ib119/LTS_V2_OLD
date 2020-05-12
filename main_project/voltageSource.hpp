@@ -1,3 +1,6 @@
+#ifndef VOLTAGESOURCE_HPP
+#define VOLTAGESOURCE_HPP
+
 #include <vector>
 
 #include "component.hpp"
@@ -12,3 +15,5 @@ public:
     float getVoltage() override;
     vector<int> getNodes() override;
 };
+
+#endif
