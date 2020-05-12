@@ -16,9 +16,9 @@ float Component::getVoltage(int node){
 }
 
 float Component::getCurrent(int node){
-    return NULL
+    return NULL;
 }
 
 float Component::getConductance(int node){
-    return NULL
+    return NULL;
 }
