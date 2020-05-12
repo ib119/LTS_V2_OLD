@@ -30,5 +30,13 @@ int main(){
         exit(1);
     }
 
-    
+    c.setupA();
+    c.adjustB();
+
+    MatrixXf A = c.getA();
+    MatrixXf b = c.getB();
+
+    IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
+    cout << A.format(CleanFmt) << endl << endl;
+    cout << b.format(CleanFmt) << endl;
 }
