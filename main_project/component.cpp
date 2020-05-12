@@ -1,29 +1,26 @@
 #include "component.hpp"
+#include "./CustomExceptionClasses/notSupportedByComponentException.cpp"
 
 using namespace std;
 
 Component::Component(){};
 Component::~Component() {}
 
-// these functions should by default return null unless overwritten by another child class down the line
+// these functions should by default throw error unless overwritten by another child class down the line
 // this allows to call an error if ever a function that shouldn't be returning a voltage or current or conductance
 // is asked for one
-// could replace null with exit() or something
 float Component::getVoltage(){
-    exit(1); 
-    //what about throwing an error and executing code in try catch statement instead of returning NULL (defensive programming)?
-    //if we don't catch the error, the program terminates and the user sees the error message (custom error object derived from error inheritance tree)
-    //=> could be desired behaviour if receive invalid input or otherwise
+    throw notSupportedByComponentException();
 }
 
 float Component::getCurrent(){
-    exit(1);
+   throw notSupportedByComponentException();
 }
 
 float Component::getConductance(){
-    exit(1);
+    throw notSupportedByComponentException();
 }
 
-float Component::updateVals(float x){
-    exit(1);//not yet implemented
+float Component::updateVals(float v){
+    throw notSupportedByComponentException();
 }
