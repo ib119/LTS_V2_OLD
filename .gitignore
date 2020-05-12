@@ -41,3 +41,6 @@ a.out
 # Visual Studio
 *.opendb
 *.vscode
+
+#Eigen
+main_project/Eigen
