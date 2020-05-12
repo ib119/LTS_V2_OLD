@@ -12,15 +12,16 @@ public:
         //pass for now
     }
     void setVoltageSources(){
-        voltageSources.push_back(make_unique<VoltageSource>(30, 1, 0));
+        voltageSources.push_back(make_unique<VoltageSource>(32, 1, 0));
+        voltageSources.push_back(make_unique<VoltageSource>(20, 3, 2));
     }
     void setCurrentSources(){
-        currentSources.push_back(make_unique<CurrentSource>(2, 2, 0));
+        currentSources.push_back(make_unique<CurrentSource>(2, 2, 1));
     }
     void setConductanceSources(){
-        cunductanceSources.push_back(make_unique<Resistor>(5, 1, 2));
-        cunductanceSources.push_back(make_unique<Resistor>(3, 2, 0));
-        cunductanceSources.push_back(make_unique<Resistor>(10, 2, 0));
+        cunductanceSources.push_back(make_unique<Resistor>(2, 2, 1));
+        cunductanceSources.push_back(make_unique<Resistor>(8, 2, 0));
+        cunductanceSources.push_back(make_unique<Resistor>(4, 3, 0));
     }
 
     TestableCircuit(){
@@ -28,12 +29,35 @@ public:
         setVoltageSources();
         setCurrentSources();
         setConductanceSources();
-        highestNodeNumber = 2;
+        highestNodeNumber = 3;
+    }
+
+    auto getA() const{
+        return A;
+    }
+    auto getb() const{
+        return b;
     }
 };
+
+/*
+    IMPORTANT: Before testing, the "private" specifier of 
+                the Circuit class must be changed to "protected"
+*/
 
 int main(){
     TestableCircuit circuit{};
     circuit.setupA();
+    cout << "setupA() complete" <<endl;
+
     circuit.adjustB();
+    cout << "adjustB() complete" <<endl;
+
+    auto A = circuit.getA();
+    auto b = circuit.getb();
+    cout << "A:" << endl;
+    cout << A;
+    cout << endl <<endl << "b:" <<endl;
+    cout << b;
+    cout << endl;
 }

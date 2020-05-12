@@ -13,7 +13,7 @@ using namespace Eigen;
 
 class Circuit
 {
-protected: //change back to private after testing
+private: //change back to private after testing
     vector<unique_ptr<Component>> components{}; // not sure if we necesarily need this one
     vector<unique_ptr<Component>> voltageSources{};
     vector<unique_ptr<Component>> currentSources{};
