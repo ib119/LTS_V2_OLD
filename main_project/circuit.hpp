@@ -13,7 +13,7 @@ using namespace Eigen;
 
 class Circuit
 {
-private:
+protected:
     string title;
     vector<Component*> components{}; // not sure if we necesarily need this one
     vector<Component*> voltageSources{};
