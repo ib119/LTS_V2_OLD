@@ -38,9 +38,12 @@ void Circuit::setupA(){
             A(nodes[i]-1, nodes[i]-1) += conductance;
             for(int j = 0; j < nodes.size(); j++){
                 if(i == j||nodes[j] == 0) continue;
-                A(nodes[i]-1, nodes[i]-1) -= conductance;
+                A(nodes[i]-1, nodes[j]-1) -= conductance;
             }
         }
+
+        IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
+        cout << A.format(CleanFmt) << endl << endl;
     }
 
     //voltage part
