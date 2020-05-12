@@ -10,11 +10,11 @@ class Resistor: public Component{
 private:
     float conductance;
 public:
-    Resistor(string name, float r, int n1, int n2);
-    ~Resistor();
+    Resistor(string _name, float r, int n1, int n2);
+    ~Resistor() = default;
 
-    float getConductance() override;
-    vector<int> getNodes() override;
+    float getConductance() const override;
+    vector<int> getNodes() const override;
 };
 
 #endif

@@ -10,11 +10,11 @@ class VoltageSource: public Component{
 private:
     float voltage;
 public:
-    VoltageSource(string name, float _voltage, int n1, int n2);
+    VoltageSource(string _name, float _voltage, int n1, int n2);
     ~VoltageSource() = default;
 
-    float getVoltage() override;
-    vector<int> getNodes() override;
+    float getVoltage() const override;
+    vector<int> getNodes() const override;
 };
 
 #endif
