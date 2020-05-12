@@ -88,18 +88,26 @@ void Circuit::adjustB(){
         const int node2 = nodes.at(1);
 
         // same suggestion as above, would make the whole code base more flexible to new componetns
-        if(node1 != 0) b(node1-1) += cSource->getCurrent();
+        if(node1 != 0){
+            b(node1-1) += cSource->getCurrent();
+        }
 
-        if(node2 != 0) b(node2-1) -= cSource->getCurrent();
+        if(node2 != 0){
+            b(node2-1) -= cSource->getCurrent();
+        }
 
         // code for debugging changes in A per itteration
         IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
-        cout << A.format(CleanFmt) << endl << endl;
+        cout << b.format(CleanFmt) << endl << endl;
     }
 
     //adding voltages
     for(int i{highestNodeNumber}; i<highestNodeNumber+voltageSources.size(); i++){
-        b(i) = voltageSources.at(i)->getVoltage();
+        b(i) = voltageSources.at(i-highestNodeNumber)->getVoltage();
+        
+        // code for debugging changes in A per itteration
+        IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
+        cout << b.format(CleanFmt) << endl << endl;
     }
 }
 
