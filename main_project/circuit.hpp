@@ -50,9 +50,11 @@ public:
 
     // operation to create A
     void setupA();
+    MatrixXf getA();
 
     // operation to adjust B
     void adjustB();
+    MatrixXf getB();
 };
 
 #endif

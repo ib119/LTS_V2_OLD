@@ -56,6 +56,10 @@ void Circuit::setupA(){
     }
 }
 
+MatrixXf Circuit::getA(){
+    return A;
+}
+
 // setupB definition
 void Circuit::adjustB(){
     b = VectorXf::Zero(highestNodeNumber+voltageSources.size());
@@ -76,4 +80,8 @@ void Circuit::adjustB(){
     for(int i{highestNodeNumber}; i<highestNodeNumber+voltageSources.size(); i++){
         b(i) = voltageSources.at(i)->getVoltage();
     }
+}
+
+MatrixXf Circuit::getB(){
+    return b;
 }
