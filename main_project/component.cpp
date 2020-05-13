@@ -22,13 +22,14 @@ float Component::getConductance() const{
     throw notSupportedByComponentException();
 }
 
+void Component::updateVals(float voltage, float current, int order){
+    throw notSupportedByComponentException();
+}
+
 string Component::getName() const{
     return name;
 }
 
-float Component::updateVals(float v){
-    throw notSupportedByComponentException();
-}
 
 // helper function to parse string with units into float
 float Component::getValue(string val){
