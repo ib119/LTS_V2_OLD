@@ -20,6 +20,9 @@ Inductor::Inductor(string name, vector<string> args, vector<float> extraInfo)
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}
+
+	types.push_back(0);
+	types.push_back(2);
 }
 
 Inductor::Inductor(string _name,float l, int n1, int n2, float timeStep, int order)
