@@ -46,6 +46,7 @@ public:
     template <class comp>
     void addComponent(string name, vector<string> args);
     void setTitle(string title);
+    void setHighestNodeNumber(int n);
     
 
     // operation to solve for a given state
