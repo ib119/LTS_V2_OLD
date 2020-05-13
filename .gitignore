@@ -49,6 +49,7 @@ dependancies/Eigen
 # Binaries
 Tests/circuit_inputs/testGetValue
 Tests/circuit_inputs/testCircuitBuilder
+main_project/main
 
 #CSV files
 *.csv
