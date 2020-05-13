@@ -68,13 +68,6 @@ public:
     // template function to add component, the class must have a constructor with the intputs as in the function bellow
     template <class comp>
     void addComponent(string name, vector<string> args);
-    
-
-    // operation to solve for a given state
-    // matrix solve_for_time(float time_step);
-
-    // operation to update circuit based on values calculated
-    // void update_from_solve(float )
 
     // operation to create A
     void setupA();
