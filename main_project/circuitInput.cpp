@@ -39,27 +39,3 @@ void Circuit::addComponent(string name, vector<string> args){
 void Circuit::setTitle(string _title){
 	title = _title;
 }
-
-// this should read one line of the iostream setup the proper components in the circuit and return the rest of the iostream
-void Circuit::operator<<(istream& file){
-	getline(file, title);
-	string arg{};
-
-	Component* newComp;
-	string compType{};
-	while(file >> arg){
-		compType = arg[0];
-		if(compType == "R" || compType == "r"){
-			newComp = setUpResistor(arg, file);
-			conductanceSources.push_back(newComp);
-		}else if(compType == "V" || compType == "v"){
-			newComp = setUpVoltageSource(arg, file);
-			voltageSources.push_back(newComp);
-		}else if(compType == "I" || compType == "i"){
-			newComp = setUpCurrentSource(arg, file);
-			currentSources.push_back(newComp);
-		}
-		components.push_back(newComp);
-		// if arg = ... compare untill you reach End statement then quit loop
-	}
-}
