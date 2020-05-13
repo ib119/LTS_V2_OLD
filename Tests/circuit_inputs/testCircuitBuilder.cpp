@@ -83,9 +83,16 @@ void exampleCircuit3(stringstream& buffer){
     buffer << "Vd 0 3 1000" << endl;
 }
 
+void exampleCircuit4(stringstream& buffer){
+    buffer << "ExampleCircuit3" << endl;
+    buffer << "Ra 0 1 1" << endl;
+    buffer << "vb 2 1 1" << endl;
+    buffer << "ic 2 0 1" << endl;
+}
+
 int main(){
     stringstream buffer;
-    onlyInductors(buffer);
+    exampleCircuit4(buffer);
 
     Circuit c{};
 
@@ -110,7 +117,7 @@ int main(){
     cout << A.format(CleanFmt) << endl << endl;
     cout << b.format(CleanFmt) << endl << endl;
     cout << x.format(CleanFmt) << endl <<endl;
-    cout << (A.inverse()*b).format(CleanFmt) << endl;
+    // cout << (A.inverse()*b).format(CleanFmt) << endl;
 
     for(int i{}; i<xMeaning.size(); i++){
         cout << i << ": " << xMeaning.at(i) << endl;
