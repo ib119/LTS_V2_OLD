@@ -17,6 +17,9 @@
 #include "./../../main_project/voltageSource.hpp"
 #include "./../../main_project/voltageSource.cpp"
 
+#include "./../../main_project/inductor.hpp"
+#include "./../../main_project/inductor.cpp"
+
 #include "./../../main_project/inputModule/input.hpp"
 #include "./../../main_project/inputModule/input.cpp"
 
@@ -47,6 +50,14 @@ void onlyCurrentSources(stringstream& buffer){
     buffer << "I4 3 0 4" << endl;
 }
 
+void onlyInductors(stringstream& buffer){
+    buffer << "OnlyResistors" << endl;
+    buffer << "L1 0 1 1" << endl;
+    buffer << "L2 1 2 2" << endl;
+    buffer << "L3 2 3 3" << endl;
+    buffer << "L4 3 0 4" << endl;
+}
+
 void exampleCircuit1(stringstream& buffer){
     buffer << "ExampleCircuit1" << endl;
     buffer << "Vb 1 0 30" << endl;
@@ -74,7 +85,7 @@ void exampleCircuit3(stringstream& buffer){
 
 int main(){
     stringstream buffer;
-    exampleCircuit3(buffer);
+    onlyInductors(buffer);
 
     Circuit c{};
 
