@@ -82,5 +82,5 @@ int main(){
     IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
     cout << A.format(CleanFmt) << endl << endl;
     cout << b.format(CleanFmt) << endl << endl;
-    cout << (A*b).format(CleanFmt) << endl;
+    cout << (A.inverse()*b).format(CleanFmt) << endl;
 }
