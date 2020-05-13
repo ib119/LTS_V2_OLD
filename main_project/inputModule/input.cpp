@@ -42,11 +42,14 @@ void readSpice(Circuit& c, istream& file){
 			c.addComponent<VoltageSource>(name, args);
 		}else if(compTypeC == "I" || compTypeC == "i"){
 			c.addComponent<CurrentSource>(name, args);
-		}else if(compTypeC == "I" || compTypeC == "i"){
-			c.addComponent<CurrentSource>(name, args);
+		//}else if(compTypeC == "I" || compTypeC == "i"){ //Is this meant to be here twice?
+		//	c.addComponent<CurrentSource>(name, args);
 		}else if(compTypeC == "L" || compTypeC == "l"){
 			c.addComponent<Inductor>(name, args);
+		}else if(compTypeC =="C" || compTypeC == "c"){
+			c.addComponent<Capacitor>(name,args);
 		}
+		
     }
     c.setHighestNodeNumber(maxNode);
 }
