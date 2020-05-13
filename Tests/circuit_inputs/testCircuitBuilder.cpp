@@ -64,9 +64,18 @@ void exampleCircuit2(stringstream& buffer){
     buffer << "R3 1 2 3k" << endl;
 }
 
+void exampleCircuit3(stringstream& buffer){
+    buffer << "ExampleCircuit3" << endl;
+    buffer << "R1 0 1 1" << endl;
+    buffer << "R2 2 3 2" << endl;
+    buffer << "R3 3 0 3" << endl;
+    buffer << "Vs 2 1 5" << endl;
+    buffer << "Vd 0 3 1000" << endl;
+}
+
 int main(){
     stringstream buffer;
-    exampleCircuit1(buffer);
+    exampleCircuit3(buffer);
 
     Circuit c{};
 
