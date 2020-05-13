@@ -8,22 +8,18 @@ Inductor::Inductor(string name, vector<string> args, vector<float> extraInfo)
     int n1 = stoi(args[0]);
     int n2 = stoi(args[1]);
     float val = getValue(args[2]);
-	int order = 0;
+	int order = 1;
 
 	subComponents = 2;
 	nodes.push_back(n1);
 	nodes.push_back(n2);	
-	comp_current = 1;
+	comp_current = 0;
 	
 	if(order==1){ //Conductance of the inductor will be the same as the companion model even at T=0 
 		comp_conductance = extraInfo[0]/(2.0*val);
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}
-
-	types.push_back(0);
-	types.push_back(2);
-
 }
 
 Inductor::Inductor(string _name,float l, int n1, int n2, float timeStep, int order)
