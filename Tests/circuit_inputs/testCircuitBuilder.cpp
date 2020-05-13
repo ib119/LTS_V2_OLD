@@ -4,7 +4,6 @@
 
 #include "./../../main_project/circuit.hpp"
 #include "./../../main_project/circuit.cpp"
-#include "./../../main_project/circuitInput.cpp"
 
 #include "./../../main_project/component.hpp"
 #include "./../../main_project/component.cpp"
