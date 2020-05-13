@@ -31,15 +31,15 @@ public:
         setVoltageSources();
         setCurrentSources();
         setConductanceSources();
-        highestNodeNumber = 3;
+        highestNodeNumber = 2;
     }
 
-    auto getA() const{
-        return A;
-    }
-    auto getb() const{
-        return b;
-    }
+    // auto getA() const{
+    //     return A;
+    // }
+    // auto getb() const{
+    //     return b;
+    // }
 };
 
 /*
@@ -55,11 +55,19 @@ int main(){
     circuit.adjustB();
     cout << "adjustB() complete" <<endl;
 
+    circuit.setupXMeaning();
+    cout << "setupXMeaning complete" <<endl;
+
     auto A = circuit.getA();
-    auto b = circuit.getb();
+    auto b = circuit.getB();
+    auto xMeaning = circuit.getXMeaning();
     cout << "A:" << endl;
     cout << A;
     cout << endl <<endl << "b:" <<endl;
     cout << b;
-    cout << endl;
+    cout << endl << endl;
+    cout << "xMeaning:" <<endl;
+    for(auto m : xMeaning){
+        cout << m <<endl;
+    }
 }
