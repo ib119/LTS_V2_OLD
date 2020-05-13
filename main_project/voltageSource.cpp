@@ -2,7 +2,7 @@
 
 #include "voltageSource.hpp"
 
-VoltageSource::VoltageSource(string name, vector<string> args)
+VoltageSource::VoltageSource(string name, vector<string> args, vector<float> extraInfo)
     :Component{name}
 {
     int n1 = stoi(args[0]);

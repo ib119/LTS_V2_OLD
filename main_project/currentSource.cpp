@@ -2,7 +2,7 @@
 
 #include "currentSource.hpp"
 
-CurrentSource::CurrentSource(string name, vector<string> args)
+CurrentSource::CurrentSource(string name, vector<string> args, vector<float> extraInfo)
     :Component{name}
 {
     int n1 = stoi(args[0]);

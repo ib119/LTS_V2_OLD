@@ -3,7 +3,7 @@
 
 #include "resistor.hpp"
 
-Resistor::Resistor(string name, vector<string> args)
+Resistor::Resistor(string name, vector<string> args, vector<float> extraInfo)
     :Component{name}
 {
     int n1 = stoi(args[0]);

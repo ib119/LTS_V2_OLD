@@ -12,5 +12,7 @@ using namespace std;
 void readSpice(Circuit& c, string file);
 // this function setsup component c from what it reads from istream
 void readSpice(Circuit& c, istream& file);
+// this function setsup basic variables for circuit
+void setupBasic(Circuit& c, float timeStep);
 
 #endif

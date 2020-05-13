@@ -2,7 +2,7 @@
 #include "inductor.hpp"
 #include "./CustomExceptionClasses/unsupportedIntegrationMethodOrderException.cpp"
 
-Inductor::Inductor(string name, vector<string> args, float timeStep)
+Inductor::Inductor(string name, vector<string> args, vector<float> extraInfo)
     :Component{name}
 {
     int n1 = stoi(args[0]);
@@ -16,7 +16,7 @@ Inductor::Inductor(string name, vector<string> args, float timeStep)
 	comp_current = 0;
 	
 	if(order==1){ //Conductance of the inductor will be the same as the companion model even at T=0 
-		comp_conductance = timeStep/(2.0*l);
+		comp_conductance = extraInfo[0]/(2.0*val);
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}

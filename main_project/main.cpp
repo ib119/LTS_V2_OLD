@@ -51,6 +51,7 @@ int main(int argc, char **argv){
     
     // setup circuit
     Circuit c{};
+    setupBasic(c, timeStep);
     // readSpice(c, cin);
 
     // debugging only

@@ -42,7 +42,15 @@ void readSpice(Circuit& c, istream& file){
 			c.addComponent<VoltageSource>(name, args);
 		}else if(compTypeC == "I" || compTypeC == "i"){
 			c.addComponent<CurrentSource>(name, args);
+		}else if(compTypeC == "I" || compTypeC == "i"){
+			c.addComponent<CurrentSource>(name, args);
+		}else if(compTypeC == "L" || compTypeC == "l"){
+			c.addComponent<Inductor>(name, args);
 		}
     }
     c.setHighestNodeNumber(maxNode);
+}
+
+void setupBasic(Circuit& c, float timeStep){
+    c.setTimeStep(timeStep);
 }
