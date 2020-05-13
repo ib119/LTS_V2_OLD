@@ -90,8 +90,8 @@ void Circuit::executeTransientSimulation(string outputFileName, float _timeStep,
             //end current cvs row
             cout << "\n";
 
-            //use current x to compute next b
-            computeNextB();
+            //update b for calculations at next timestep
+            adjustB();
         }
     }
     outputFile.close();
