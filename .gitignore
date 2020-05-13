@@ -44,5 +44,6 @@ a.out
 
 #Eigen
 main_project/Eigen
+dependancies/Eigen
 Tests/circuit_inputs/testGetValue
 Tests/circuit_inputs/testCircuitBuilder
