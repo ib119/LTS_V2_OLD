@@ -68,9 +68,6 @@ public:
     // template function to add component, the class must have a constructor with the intputs as in the function bellow
     template <class comp>
     void addComponent(string name, vector<string> args);
-    void setTitle(string title);
-    void setHighestNodeNumber(int n);
-    
 
     // operation to solve for a given state
     // matrix solve_for_time(float time_step);

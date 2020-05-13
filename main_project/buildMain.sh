@@ -1,3 +1,3 @@
 #!/bin/bash
 
-g++ -I ./../dependencies/eigen-3.3.7 main2.cpp
+g++ main2.cpp inductor.cpp voltageSource.cpp currentSource.cpp resistor.cpp component.cpp circuit.cpp
