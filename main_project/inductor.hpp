@@ -11,6 +11,7 @@ private:
 	float prev_current;
 
 public:
+	Inductor(string name, vector<string> args, float timeStep);
 	Inductor(string _name, float l, int n1, int n2, float timeStep, int order);
 	~Inductor() = default;
 	float getConductance() const override;
