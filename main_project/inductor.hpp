@@ -1,5 +1,5 @@
-#ifndef inductor_hpp
-#define inductor_hpp
+#ifndef INDUCTOR_HPP
+#define INDUCTOR_HPP
 
 #include "circuit.hpp"
 class Inductor: public Component{
