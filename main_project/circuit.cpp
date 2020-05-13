@@ -8,15 +8,87 @@ using namespace Eigen;
 
 Circuit::Circuit()
 {
-    time = 0;
+    currentTime = 0;
     timeStep = 0.1; // in seconds
     highestNodeNumber = 0;
+    hasNonLinear = false;
 }
 
+//dealocate raw pointers
 Circuit::~Circuit()
-{
-    //if we use vectors of raw pointer, this must delete them
-    //if we change to smart pointers, deletion will be done automatically by the pointer
+{   
+    //could just use component code below but decided to use
+    //the other vectors as we might get rid of the component vector
+    //later on 
+
+    // for(auto comp : components){
+    //     delete comp;
+    // }
+    // components.clear();
+    for(auto vs : voltageSources){
+        delete vs;
+    }
+    voltageSources.clear();
+    for(auto cs : currentSources){
+        delete cs;
+    }
+    currentSources.clear();
+    for(auto g : conductanceSources){
+        delete g;
+    }
+    conductanceSources.clear();
+}
+
+string Circuit::getTitle() const{
+    return title;
+}
+void Circuit::setTitle(string _title){
+    title = _title;
+}
+
+int Circuit::getHighestNodeNumber() const{
+    return highestNodeNumber;
+}
+void Circuit::setHighestNodeNumber(int _highestNodeNumber){
+    highestNodeNumber = _highestNodeNumber;
+}
+
+float Circuit::getCurrentTime() const{
+    return currentTime;
+}
+void Circuit::setCurrentTime(float _currentTime){
+    currentTime = _currentTime;
+}
+
+float Circuit::getSimulationTime() const{
+    return simulationTime;
+}
+void Circuit::setSimulationTime(float _simulationTime){
+    simulationTime = _simulationTime;
+}
+
+float Circuit::getTimeStep() const{
+    return timeStep;
+}
+void Circuit::setTimeStep(float _timeStep){
+    timeStep = _timeStep;
+}
+
+bool Circuit::hasNonLinearComponents() const{
+    return hasNonLinear;
+}
+void Circuit::setHasNonLinearComponents(bool _hasNonLinearComponents){
+    hasNonLinear = _hasNonLinearComponents;
+}
+
+vector<Component*>& Circuit::getVoltageSourcesRef(){
+    return voltageSources;
+}
+vector<Component*>& Circuit::getCurrentSourcesRef(){
+    return currentSources;
+}
+vector<Component*>& Circuit::getConductanceSourcesRef(){
+    return conductanceSources;
 }
 
 // setupA definition
@@ -89,9 +161,17 @@ void Circuit::setupA()
     }
 }
 
-MatrixXf Circuit::getA()
+MatrixXf Circuit::getA() const
 {
     return A;
+}
+
+void Circuit::computeA_inv(){
+    A_inv = A.inverse();
+}
+
+MatrixXf Circuit::getA_inv() const{
+    return A_inv;
 }
 
 // setupB definition
@@ -130,7 +210,30 @@ void Circuit::adjustB()
     }
 }
 
-MatrixXf Circuit::getB()
+VectorXf Circuit::getB() const
 {
     return b;
+}
+
+void Circuit::setupXMeaning(){
+    xMeaning.clear();
+
+    for(int i{1}; i<=highestNodeNumber; i++){
+        xMeaning.push_back("v_" + to_string(i));
+    }
+    for(const auto &vs : voltageSources){
+        xMeaning.push_back("I_V" + vs->getName());
+    }
+}
+
+vector<string> Circuit::getXMeaning() const{
+    return xMeaning;
+}
+
+void Circuit::computeX(){
+    x = A_inv * b;
+}
+
+VectorXf Circuit::getX() const{
+    return x;
 }

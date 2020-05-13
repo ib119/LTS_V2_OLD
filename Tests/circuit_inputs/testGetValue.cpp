@@ -14,7 +14,8 @@ using namespace std;
 
 int main(){
     bool pass = false;
-    Circuit c{};
+    // sets up a component to allow acces to get value function
+    Resistor c{"R1", 0, 0, 1};
     
     pass |= 10e-15 == c.getValue("10u");
     pass |= 10 == c.getValue("10aksjdkjaskd");

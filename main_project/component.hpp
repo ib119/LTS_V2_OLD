@@ -11,6 +11,7 @@ class Component
 protected:
     string name;
     vector<int> nodes;
+    vector<int> types;
     int subComponents;
 public:
     Component(string _name);
@@ -21,10 +22,16 @@ public:
     virtual float getVoltage() const;
     virtual float getCurrent() const;
     
+    string getName() const;
     virtual vector<int> getNodes() const = 0;
+
 
     // this should be used to update the value of the voltage and current accross a component after an iteration
     virtual void updateVals(float voltage, float current, int order);
+
+
+    float getValue(string val);
+    vector<int> getTypes();
 };
 
 #endif
