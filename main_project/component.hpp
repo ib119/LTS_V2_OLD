@@ -11,6 +11,7 @@ class Component
 protected:
     string name;
     vector<int> nodes;
+    vector<int> types;
     int subComponents;
 public:
     Component(string _name);
@@ -26,6 +27,9 @@ public:
 
     // this should be used to update the value of the voltage accross a component after an iteration
     virtual float updateVals(float v);
+
+    float getValue(string val);
+    vector<int> getTypes();
 };
 
 #endif
