@@ -11,6 +11,7 @@ Circuit::Circuit()
     currentTime = 0;
     timeStep = 0.1; // in seconds
     highestNodeNumber = 0;
+    hasNonLinear = false;
 }
 
 //dealocate raw pointers
