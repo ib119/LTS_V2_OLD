@@ -1,9 +1,9 @@
-#include "inductor.hpp"
 #include "circuit.hpp"
+#include "inductor.hpp"
 
 
-Inductor::Inductor(float l, int n1, int n2, float timeStep, int order){
-	inductance = l;
+Inductor::Inductor(string _name,float l, int n1, int n2, float timeStep, int order):Component{_name}, inductance{l}{
+	subComponents = 2;	
 	nodes.push_back(n1);
 	nodes.push_back(n2);	
 	comp_current = 0;
@@ -17,29 +17,24 @@ Inductor::~Inductor(){
 
 }
 
-float Inductor::getConductance(){
+float Inductor::getConductance() const{
 	return comp_conductance;
 }
 
-float Inductor::getCurrent(){
+float Inductor::getCurrent() const{
 	return comp_current;
 }
 
-void Inductor::updateVals(int order){
+void Inductor::updateVals(float voltage, float current, int order){
 	if(order==1){ //using companion model for the trapezoid integration method.
-		prev_voltage = voltage;
-		voltage = 0; //REPLACE WITH Voltage[A] - Voltage[B], where Voltage[A] is the voltage at node A.
-		prev_current = current;
-		current = 0; //REPLACE WITH current flowing into inductor
-		comp_current = current + (comp_conductance*voltage)
+		comp_current = current + (comp_conductance*voltage);
+
 	}
 		
-
-
 }
-
-
-int main(){
-Inductor l1(0.1,1,2,0.01,1);
-
+vector<int> Inductor::getNodes() const{
+    vector<int> res{};
+    res.push_back(nodes.at(0));
+    res.push_back(nodes.at(1));
+    return res;
 }

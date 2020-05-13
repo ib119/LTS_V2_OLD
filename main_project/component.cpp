@@ -22,6 +22,6 @@ float Component::getConductance() const{
     throw notSupportedByComponentException();
 }
 
-float Component::updateVals(float v){
+void Component::updateVals(float voltage, float current, int order){
     throw notSupportedByComponentException();
 }

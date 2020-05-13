@@ -24,7 +24,7 @@ public:
     virtual vector<int> getNodes() const = 0;
 
     // this should be used to update the value of the voltage and current accross a component after an iteration
-    virtual void updateVals(float timeStep, int order) = 0;
+    virtual void updateVals(float voltage, float current, int order);
 };
 
 #endif
