@@ -88,8 +88,9 @@ int main(){
     cout << A.format(CleanFmt) << endl << endl;
     cout << b.format(CleanFmt) << endl << endl;
     cout << x.format(CleanFmt) << endl <<endl;
+    cout << (A.inverse()*b).format(CleanFmt) << endl;
 
     for(int i{}; i<xMeaning.size(); i++){
         cout << i << ": " << xMeaning.at(i) << endl;
-    }
+    }    
 }
