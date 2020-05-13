@@ -10,28 +10,28 @@ void readSpice(Circuit& c, istream& file){
     getline(file, title);
     c.setTitle(title);
 
-    stringstream line;
     string lineString{};
-    char compTypeC{};
-    string name{};
-    string arg{};
-    vector<string> args;
-
 
     while(getline(file, lineString)){
+        stringstream line;
+        string compTypeC{};
+        string name{};
+        string arg{};
+        vector<string> args{};
+
         line << lineString;
-        line.get(compTypeC);
         line >> name;
+        compTypeC = name[0];
 
         while(line >> arg){
             args.push_back(arg);
         }
 
-        if(compTypeC == 'R' || compTypeC == 'r'){
+        if(compTypeC == "R" || compTypeC == "r"){
 			c.addComponent<Resistor>(name, args);
-		}else if(compTypeC == 'V' || compTypeC == 'v'){
+		}else if(compTypeC == "V" || compTypeC == "v"){
 			c.addComponent<VoltageSource>(name, args);
-		}else if(compTypeC == 'I' || compTypeC == 'i'){
+		}else if(compTypeC == "I" || compTypeC == "i"){
 			c.addComponent<CurrentSource>(name, args);
 		}
     }
