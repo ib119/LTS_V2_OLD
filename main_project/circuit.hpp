@@ -27,6 +27,7 @@ protected:
     MatrixXf A_inv;
     VectorXf b;
     VectorXf x;
+    vector<string> xMeaning; // indicates what the values in x mean (need to know when outputing result)
 public:
     // default constructor for initializing empty object
     Circuit();
@@ -52,11 +53,23 @@ public:
 
     // operation to create A
     void setupA();
-    MatrixXf getA();
+    MatrixXf getA() const;
+
+    // compute inverse of A
+    void computeA_inv();
+    MatrixXf getA_inv() const;
 
     // operation to adjust B
     void adjustB();
-    MatrixXf getB();
+    VectorXf getB() const;
+
+    // operation to assign meaning to the result vector x
+    void setupXMeaning();
+    vector<string> getXMeaning() const;
+
+    // A_inv must exist for this to work
+    void computeX();
+    VectorXf getX() const;
 };
 
 #endif

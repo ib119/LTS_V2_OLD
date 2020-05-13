@@ -21,6 +21,7 @@ public:
     virtual float getVoltage() const;
     virtual float getCurrent() const;
     
+    string getName() const;
     virtual vector<int> getNodes() const = 0;
 
     // this should be used to update the value of the voltage accross a component after an iteration

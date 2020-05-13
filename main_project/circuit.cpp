@@ -15,11 +15,15 @@ Circuit::Circuit()
 
 //dealocate raw pointers
 Circuit::~Circuit()
-{
-    for(auto comp : components){
-        delete comp;
-    }
-    components.clear();
+{   
+    //could just use component code below but decided to use
+    //the other vectors as we might get rid of the component vector
+    //later on 
+
+    // for(auto comp : components){
+    //     delete comp;
+    // }
+    // components.clear();
     for(auto vs : voltageSources){
         delete vs;
     }
@@ -104,9 +108,17 @@ void Circuit::setupA()
     }
 }
 
-MatrixXf Circuit::getA()
+MatrixXf Circuit::getA() const
 {
     return A;
+}
+
+void Circuit::computeA_inv(){
+    A_inv = A.inverse();
+}
+
+MatrixXf Circuit::getA_inv() const{
+    return A_inv;
 }
 
 // setupB definition
@@ -145,7 +157,30 @@ void Circuit::adjustB()
     }
 }
 
-MatrixXf Circuit::getB()
+VectorXf Circuit::getB() const
 {
     return b;
+}
+
+void Circuit::setupXMeaning(){
+    xMeaning.clear();
+
+    for(int i{1}; i<=highestNodeNumber; i++){
+        xMeaning.push_back("v_" + to_string(i));
+    }
+    for(const auto &vs : voltageSources){
+        xMeaning.push_back("I_V" + vs->getName());
+    }
+}
+
+vector<string> Circuit::getXMeaning() const{
+    return xMeaning;
+}
+
+void Circuit::computeX(){
+    x = A_inv * b;
+}
+
+VectorXf Circuit::getX() const{
+    return x;
 }

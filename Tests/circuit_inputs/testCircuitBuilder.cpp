@@ -63,7 +63,7 @@ void exampleCircuit2(stringstream& buffer){
 
 int main(){
     stringstream buffer;
-    exampleCircuit2(buffer);
+    exampleCircuit1(buffer);
 
     Circuit c{};
 
@@ -75,12 +75,21 @@ int main(){
 
     c.setupA();
     c.adjustB();
+    c.computeA_inv();
+    c.computeX();
+    c.setupXMeaning();
 
     MatrixXf A = c.getA();
-    MatrixXf b = c.getB();
+    VectorXf b = c.getB();
+    VectorXf x = c.getX();
+    vector<string> xMeaning = c.getXMeaning();
 
     IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
     cout << A.format(CleanFmt) << endl << endl;
     cout << b.format(CleanFmt) << endl << endl;
-    cout << (A*b).format(CleanFmt) << endl;
+    cout << x.format(CleanFmt) << endl <<endl;
+
+    for(int i{}; i<xMeaning.size(); i++){
+        cout << i << ": " << xMeaning.at(i) << endl;
+    }
 }

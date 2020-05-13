@@ -22,6 +22,10 @@ float Component::getConductance() const{
     throw notSupportedByComponentException();
 }
 
+string Component::getName() const{
+    return name;
+}
+
 float Component::updateVals(float v){
     throw notSupportedByComponentException();
 }
