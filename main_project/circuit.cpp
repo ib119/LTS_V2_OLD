@@ -236,7 +236,3 @@ void Circuit::computeX(){
 VectorXf Circuit::getX() const{
     return x;
 }
-
-void computeNextB(){
-    throw "computeNextB not yet implemented";
-}

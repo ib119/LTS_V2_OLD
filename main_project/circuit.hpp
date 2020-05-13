@@ -96,9 +96,6 @@ public:
     void computeX();
     VectorXf getX() const;
 
-    //this function computes the next b based on the current x
-    void computeNextB();
-
     //executes the transient simulation based on the stored circuit components
     //responsible for the entire simulation
     //outputFileName must include .csv extension
