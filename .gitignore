@@ -50,3 +50,4 @@ dependancies/Eigen
 Tests/circuit_inputs/testGetValue
 Tests/circuit_inputs/testCircuitBuilder
 main_project/main
+out.csv
