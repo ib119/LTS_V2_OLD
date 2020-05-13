@@ -38,6 +38,58 @@ Circuit::~Circuit()
     conductanceSources.clear();
 }
 
+string Circuit::getTitle() const{
+    return title;
+}
+void Circuit::setTitle(string _title){
+    title = _title;
+}
+
+int Circuit::getHighestNodeNumber() const{
+    return highestNodeNumber;
+}
+void Circuit::setHighestNodeNumber(int _highestNodeNumber){
+    highestNodeNumber = _highestNodeNumber;
+}
+
+float Circuit::getCurrentTime() const{
+    return currentTime;
+}
+void Circuit::setCurrentTime(float _currentTime){
+    currentTime = _currentTime;
+}
+
+float Circuit::getSimulationTime() const{
+    return simulationTime;
+}
+void Circuit::setSimulationTime(float _simulationTime){
+    simulationTime = _simulationTime;
+}
+
+float Circuit::getTimeStep() const{
+    return timeStep;
+}
+void Circuit::setTimeStep(float _timeStep){
+    timeStep = _timeStep;
+}
+
+bool Circuit::hasNonLinearComponents() const{
+    return hasNonLinear;
+}
+void Circuit::setHasNonLinearComponents(bool _hasNonLinearComponents){
+    hasNonLinear = _hasNonLinearComponents;
+}
+
+vector<Component*>& Circuit::getVoltageSourcesRef(){
+    return voltageSources;
+}
+vector<Component*>& Circuit::getCurrentSourcesRef(){
+    return currentSources;
+}
+vector<Component*>& Circuit::getConductanceSourcesRef(){
+    return conductanceSources;
+}
+
 // setupA definition
 void Circuit::setupA()
 {

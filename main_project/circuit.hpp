@@ -39,6 +39,29 @@ public:
     Circuit(const Circuit&) = delete;
     Circuit& operator=(const Circuit&) = delete;
 
+    string getTitle() const;
+    void setTitle(string _title);
+
+    int getHighestNodeNumber() const;
+    void setHighestNodeNumber(int _highestNodeNumber);
+
+    float getCurrentTime() const;
+    void setCurrentTime(float _currentTime);
+
+    float getSimulationTime() const;
+    void setSimulationTime(float _simulationTime);
+
+    float getTimeStep() const;
+    void setTimeStep(float _timeStep);
+
+    bool hasNonLinearComponents() const;
+    void setHasNonLinearComponents(bool _hasNonLinearComponents);
+
+    // returns references to prevent inefficient copying
+    vector<Component*>& getVoltageSourcesRef();
+    vector<Component*>& getCurrentSourcesRef();
+    vector<Component*>& getConductanceSourcesRef();
+
     // operator overload to add ability to read from iostream to set up circuit
     void operator<<(iostream& input);
     // input helper functions
