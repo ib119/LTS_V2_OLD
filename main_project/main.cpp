@@ -37,8 +37,8 @@ void exampleCircuit1(stringstream& buffer){
 int main(int argc, char **argv){
     //get optional input arguments
     string outputFileName = "out.csv";
-    float timeStep = 0.1; //seconds
-    float simulationTime = 10; //seconds
+    float timeStep = 0.2; //seconds
+    float simulationTime = 1; //seconds
     if(argc > 1){
         outputFileName = argv[1];
     }

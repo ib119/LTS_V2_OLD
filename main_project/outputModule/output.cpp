@@ -54,7 +54,7 @@ void outputCSV(Circuit& c, string outputFileName, float timeStep, float simulati
 
 void runAnalysis(Circuit& c, ofstream& outputFile, float timeStep, float simulationTime){
     string outLine{};
-    for(u_int t{}; t<=simulationTime; t+=timeStep){// could replace with a while loop if we ever do dinamic time steps
+    for(float t = 0; t<=simulationTime; t += timeStep){// could replace with a while loop if we ever do dinamic time steps
         outLine = "";
         if(!c.hasNonLinearComponents()){
             linearSetup(c);
