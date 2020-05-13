@@ -10,6 +10,7 @@ class CurrentSource: public Component{
 private:
     float current;
 public:
+    CurrentSource(string _name, vector<string> args);
     CurrentSource(string _name, float _current, int n1, int n2);
     ~CurrentSource() = default;
 

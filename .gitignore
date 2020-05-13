@@ -42,8 +42,10 @@ a.out
 *.opendb
 *.vscode
 
-#Eigen
+# Eigen
 main_project/Eigen
 dependancies/Eigen
+
+# Binaries
 Tests/circuit_inputs/testGetValue
 Tests/circuit_inputs/testCircuitBuilder

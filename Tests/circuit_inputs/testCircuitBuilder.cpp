@@ -18,6 +18,9 @@
 #include "./../../main_project/voltageSource.hpp"
 #include "./../../main_project/voltageSource.cpp"
 
+#include "./../../main_project/inputModule/input.hpp"
+#include "./../../main_project/inputModule/input.cpp"
+
 using namespace std;
 
 void onlyResistors(stringstream& buffer){
@@ -68,7 +71,7 @@ int main(){
     Circuit c{};
 
     if(buffer){
-        c << buffer;
+        readSpice(c, buffer);
     }else{
         exit(1);
     }
