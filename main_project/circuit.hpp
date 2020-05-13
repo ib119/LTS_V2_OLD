@@ -40,12 +40,13 @@ public:
     Circuit& operator=(const Circuit&) = delete;
 
     // operator overload to add ability to read from iostream to set up circuit
-    void operator<<(iostream& input);
-    // input helper functions
-    float getValue(string val);
-    Component* setUpResistor(string arg, iostream& file);
-    Component* setUpVoltageSource(string arg, iostream& file);
-    Component* setUpCurrentSource(string arg, iostream& file);
+    void operator<<(istream& input);
+
+    // template function to add component, the class must have a constructor with the intputs as in the function bellow
+    template <class comp>
+    void addComponent(string name, vector<string> args);
+    void setTitle(string title);
+    
 
     // operation to solve for a given state
     // matrix solve_for_time(float time_step);

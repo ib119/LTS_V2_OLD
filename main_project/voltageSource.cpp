@@ -2,6 +2,19 @@
 
 #include "voltageSource.hpp"
 
+VoltageSource::VoltageSource(string name, vector<string> args)
+    :Component{name}
+{
+    int n1 = stoi(args[0]);
+    int n2 = stoi(args[1]);
+    float val = getValue(args[2]);
+
+    nodes.push_back(n1);
+    nodes.push_back(n2);
+    voltage = val;
+    types.push_back(1);
+}
+
 VoltageSource::VoltageSource(string _name, float _voltage, int n1, int n2)
     :Component{_name}, voltage{_voltage}{
 
