@@ -12,13 +12,11 @@ private:
 
 public:
 	Inductor(string _name, float l, int n1, int n2, float timeStep, int order);
-	~Inductor();
+	~Inductor() = default;
 	float getConductance() const override;
 	vector<int> getNodes() const ;
 	float getCurrent() const override;
-	void updateVals(float voltage, float current,int order); //Called at the end of every iteration, after calculating node voltages and component currents.
-
-
+	void updateVals(float voltage, float current, int order); //Called at the end of every iteration, after calculating node voltages and component currents.
 };
 
 #endif

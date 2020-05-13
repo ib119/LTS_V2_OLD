@@ -2,19 +2,18 @@
 #include "inductor.hpp"
 
 
-Inductor::Inductor(string _name,float l, int n1, int n2, float timeStep, int order):Component{_name}, inductance{l}{
+Inductor::Inductor(string _name,float l, int n1, int n2, float timeStep, int order)
+	:Component{_name}, inductance{l}{
 	subComponents = 2;	
 	nodes.push_back(n1);
 	nodes.push_back(n2);	
 	comp_current = 0;
 	
-	if(order==1){	//Conductance of the inductor will be the same as the companion model even at T=0 
+	if(order==1){ //Conductance of the inductor will be the same as the companion model even at T=0 
 		comp_conductance = timeStep/(2.0*l);
+	}else{
+		throw "Currently only first order is supported";
 	}
-}
-
-Inductor::~Inductor(){
-
 }
 
 float Inductor::getConductance() const{
@@ -28,7 +27,8 @@ float Inductor::getCurrent() const{
 void Inductor::updateVals(float voltage, float current, int order){
 	if(order==1){ //using companion model for the trapezoid integration method.
 		comp_current = current + (comp_conductance*voltage);
-
+	}else{
+		throw "Currently only first order is supported";
 	}
 		
 }
