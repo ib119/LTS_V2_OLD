@@ -13,10 +13,25 @@ Circuit::Circuit()
     highestNodeNumber = 0;
 }
 
+//dealocate raw pointers
 Circuit::~Circuit()
 {
-    //if we use vectors of raw pointer, this must delete them
-    //if we change to smart pointers, deletion will be done automatically by the pointer
+    for(auto comp : components){
+        delete comp;
+    }
+    components.clear();
+    for(auto vs : voltageSources){
+        delete vs;
+    }
+    voltageSources.clear();
+    for(auto cs : currentSources){
+        delete cs;
+    }
+    currentSources.clear();
+    for(auto g : conductanceSources){
+        delete g;
+    }
+    conductanceSources.clear();
 }
 
 // setupA definition
