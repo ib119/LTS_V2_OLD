@@ -14,7 +14,7 @@
 
 using namespace std;
 
-void Circuit::executeTransientSimulation(string outputFileName, float _timeStep = 0.1, float _simulationTime = 10){
+void Circuit::executeTransientSimulation(string outputFileName, float _timeStep, float _simulationTime){
     //set simulation parameters
     timeStep = _timeStep;
     simulationTime = _simulationTime;
@@ -25,23 +25,23 @@ void Circuit::executeTransientSimulation(string outputFileName, float _timeStep 
 
     //add headers to csv file
     //display time, node voltages, current through components
-    outputFileName << "time";
+    outputFile << "time";
     for(int i{1}; i<=highestNodeNumber; i++){
-        outputFileName << ",v_" + to_string(i);
+        outputFile << ",v_" + to_string(i);
     }
     //conductance sources
     for(const auto &gs : conductanceSources){
-        outputFileName << ",i_R" + to_string(gs->getName());
+        outputFile << ",i_R" + gs->getName();
     }
     //voltage sources
     for(const auto &vs : voltageSources){
-        outputFileName << ",i_V" + to_string(vs->getName());
+        outputFile << ",i_V" + vs->getName();
     }
     //current sources (do we care about outputing current through current sources?)
     for(const auto &cs : currentSources){
-        outputFileName << ",i_I" + to_string(cs->getName());
+        outputFile << ",i_I" + cs->getName();
     }
-    outputFileName << "\n";
+    outputFile << "\n";
     
     if(!hasNonLinear){
         //these don't change during simulation with linear components
@@ -55,11 +55,11 @@ void Circuit::executeTransientSimulation(string outputFileName, float _timeStep 
 
             //output current time 
             currentTime = t;
-            outputFileName << to_string(t);
+            outputFile << to_string(t);
 
             //output node voltages
             for(int i{}; i<highestNodeNumber; i++){
-                outputFileName << "," + to_string(x(i));
+                outputFile << "," + to_string(x(i));
             }
 
             //output current through resistors
@@ -72,19 +72,19 @@ void Circuit::executeTransientSimulation(string outputFileName, float _timeStep 
                 voltage = x(nodes.at(0)-1) - x(nodes.at(1)-1);
                 current = voltage * gs->getConductance();
 
-                outputFileName << "," + to_string(current);
+                outputFile << "," + to_string(current);
             }
 
             //output current through voltage sources
             for(int i{}; i<voltageSources.size(); i++){
                 current = x(highestNodeNumber+i);
 
-                outputFileName << "," + to_string(current);
+                outputFile << "," + to_string(current);
             }
 
             //output current through current sources
             for(const auto &cs : currentSources){
-                outputFileName << "," + to_string(cs->getCurrent());
+                outputFile << "," + to_string(cs->getCurrent());
             }
 
             //end current cvs row
