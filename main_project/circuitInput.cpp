@@ -16,7 +16,7 @@ using namespace std;
 template <class comp>
 void Circuit::addComponent(string name, vector<string> args){
 	comp* newComp = new comp(name, args);
-	vector<int> types = newComp.getTypes();
+	vector<int> types = newComp->getTypes();
 	for(int type : types){
 		switch (type)
 		{
