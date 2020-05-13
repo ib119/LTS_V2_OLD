@@ -29,22 +29,22 @@ Circuit::~Circuit()
     //the other vectors as we might get rid of the component vector
     //later on 
 
-    // for(auto comp : components){
-    //     delete comp;
-    // }
+    for(auto comp : components){
+        delete comp;
+    }
     // components.clear();
-    for(auto vs : voltageSources){
-        delete vs;
-    }
-    voltageSources.clear();
-    for(auto cs : currentSources){
-        delete cs;
-    }
-    currentSources.clear();
-    for(auto g : conductanceSources){
-        delete g;
-    }
-    conductanceSources.clear();
+    // for(auto vs : voltageSources){
+    //     delete vs;
+    // }
+    // voltageSources.clear();
+    // for(auto cs : currentSources){
+    //     delete cs;
+    // }
+    // currentSources.clear();
+    // for(auto g : conductanceSources){
+    //     delete g;
+    // }
+    // conductanceSources.clear();
 }
 
 string Circuit::getTitle() const{
@@ -268,6 +268,6 @@ void Circuit::addComponent(string name, vector<string> args){
 		default:
 			break;
 		}
-		components.push_back(newComp);
 	}
+    components.push_back(newComp);
 }
