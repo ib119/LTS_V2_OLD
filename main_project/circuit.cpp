@@ -8,7 +8,7 @@ using namespace Eigen;
 
 Circuit::Circuit()
 {
-    time = 0;
+    currentTime = 0;
     timeStep = 0.1; // in seconds
     highestNodeNumber = 0;
 }
@@ -183,4 +183,8 @@ void Circuit::computeX(){
 
 VectorXf Circuit::getX() const{
     return x;
+}
+
+void computeNextB(){
+    throw "computeNextB not yet implemented";
 }

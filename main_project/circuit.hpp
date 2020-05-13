@@ -20,7 +20,9 @@ protected:
     vector<Component*> currentSources{};
     vector<Component*> conductanceSources{};
     int highestNodeNumber; //more efficient to keep updating when parsing netlist (otherwise have to iterate through all components again)
-    float time;
+    //all time is in seconds
+    float currentTime;
+    float simulationTime; //time when simulation ends
     float timeStep;
     bool hasNonLinear;
     MatrixXf A;
@@ -70,6 +72,14 @@ public:
     // A_inv must exist for this to work
     void computeX();
     VectorXf getX() const;
+
+    //this function computes the next b based on the current x
+    void computeNextB();
+
+    //executes the transient simulation based on the stored circuit components
+    //responsible for the entire simulation
+    //outputFileName must include .csv extension
+    void executeTransientSimulation(string outputFileName, float _timeStep = 0.1, float _simulationTime = 10);
 };
 
 #endif
