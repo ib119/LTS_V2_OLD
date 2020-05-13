@@ -115,7 +115,7 @@ Component* Circuit::setUpResistor(string arg, iostream& file){
 	return out;
 }
 
-// helper function to setup up resistor from specific inputs
+// helper function to setup up a voltage source from specific inputs
 Component* Circuit::setUpVoltageSource(string arg, iostream& file){
 	string name = arg.substr(1, arg.size()-1);
 	file >> arg;
@@ -132,7 +132,7 @@ Component* Circuit::setUpVoltageSource(string arg, iostream& file){
 	return out;
 }
 
-// helper function to setup up resistor from specific inputs
+// helper function to setup up a current source from specific inputs
 Component* Circuit::setUpCurrentSource(string arg, iostream& file){
 	string name = arg.substr(1, arg.size()-1);
 	file >> arg;
