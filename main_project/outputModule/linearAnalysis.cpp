@@ -16,11 +16,12 @@
 //these don't change during simulation with linear components
 void linearSetup(Circuit& c){
     c.setupA();
+    c.adjustB();
     c.computeA_inv();
     c.setupXMeaning();
 }
 
-string runTransience(Circuit& c){
+string runLinearTransience(Circuit& c, float t){
     //get references to the components stored inside the circuit
     vector<Component*> voltageSources = c.getVoltageSourcesRef();
     vector<Component*> currentSources = c.getCurrentSourcesRef();
@@ -43,12 +44,15 @@ string runTransience(Circuit& c){
 
     //output current through resistors
     vector<int> nodes{};
-    float voltage{}; 
+    float voltage{}, v1{}, v2{};
     float current{};
     for(const auto &gs : conductanceSources){
         nodes = gs->getNodes();
 
-        voltage = x(nodes.at(0)-1) - x(nodes.at(1)-1);
+        v1 = nodes.at(0) == 0 ? 0 : x(nodes.at(0)-1);
+        v2 = nodes.at(1) == 0 ? 0 : x(nodes.at(1)-1);
+        voltage = v1 - v2;
+
         current = voltage * gs->getConductance();
 
         outLine += "," + to_string(current);

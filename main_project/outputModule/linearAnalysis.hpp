@@ -13,6 +13,6 @@
 #include "./../inductor.hpp"
 
 void linearSetup(Circuit& c);
-string runLinearTransience(Circuit& c);
+string runLinearTransience(Circuit& c, float t);
 
 #endif

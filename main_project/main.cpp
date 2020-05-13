@@ -1,20 +1,38 @@
 #include <iostream>
-#include <Eigen>
 #include <vector>
 #include <fstream>
 
 #include "circuit.hpp"
-#include "component.hpp"
-#include "resistor.hpp"
-#include "voltageSource.hpp"
-#include "currentSource.hpp"
-#include "capacitor.hpp"
-#include "inductor.hpp"
+
+// for debugging only
+#include "circuit.cpp"
+#include "component.cpp"
+#include "resistor.cpp"
+#include "voltageSource.cpp"
+#include "currentSource.cpp"
+// #include "capacitor.cpp"
+#include "inductor.cpp"
 
 #include "inputModule/input.hpp"
 #include "outputModule/output.hpp"
 
+// for debugging only
+#include "inputModule/input.cpp"
+#include "outputModule/output.cpp"
+#include "outputModule/linearAnalysis.cpp"
+
 using namespace std;
+
+// for debugging only
+void exampleCircuit1(stringstream& buffer){
+    buffer << "ExampleCircuit1" << endl;
+    buffer << "Vb 1 0 30" << endl;
+    buffer << "R1 1 2 5" << endl;
+    buffer << "R2 2 0 3" << endl;
+    buffer << "R3 2 0 10" << endl;
+    buffer << "Is 2 0 2" << endl;
+}
+
 
 int main(int argc, char **argv){
     //get optional input arguments
@@ -33,9 +51,16 @@ int main(int argc, char **argv){
     
     // setup circuit
     Circuit c{};
-    readSpice(c, cin);
+    // readSpice(c, cin);
+
+    // debugging only
+    stringstream buffer;
+    exampleCircuit1(buffer);
+    readSpice(c, buffer);
+
 
     // run simulation
     outputCSV(c, outputFileName, timeStep, simulationTime);
 }
+
 
