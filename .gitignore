@@ -44,7 +44,11 @@ a.out
 
 # Eigen
 main_project/Eigen
+dependancies/Eigen
 
 # Binaries
 Tests/circuit_inputs/testGetValue
 Tests/circuit_inputs/testCircuitBuilder
+
+#CSV files
+*.csv

@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <vector>
-#include <memory>
+// #include <memory>
 #include <Eigen/Dense>
 
 #include "component.hpp"
@@ -68,9 +68,6 @@ public:
     // template function to add component, the class must have a constructor with the intputs as in the function bellow
     template <class comp>
     void addComponent(string name, vector<string> args);
-    void setTitle(string title);
-    void setHighestNodeNumber(int n);
-    
 
     // operation to solve for a given state
     // matrix solve_for_time(float time_step);
@@ -97,11 +94,6 @@ public:
     // A_inv must exist for this to work
     void computeX();
     VectorXf getX() const;
-
-    //executes the transient simulation based on the stored circuit components
-    //responsible for the entire simulation
-    //outputFileName must include .csv extension
-    void executeTransientSimulation(string outputFileName, float _timeStep = 0.1, float _simulationTime = 10);
 };
 
 #endif

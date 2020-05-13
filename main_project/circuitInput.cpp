@@ -35,11 +35,3 @@ void Circuit::addComponent(string name, vector<string> args){
 		components.push_back(newComp);
 	}
 }
-
-void Circuit::setTitle(string _title){
-	title = _title;
-}
-
-void Circuit::setHighestNodeNumber(int n){
-	highestNodeNumber = n;
-}
