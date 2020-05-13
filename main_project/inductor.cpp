@@ -13,7 +13,7 @@ Inductor::Inductor(string name, vector<string> args, vector<float> extraInfo)
 	subComponents = 2;
 	nodes.push_back(n1);
 	nodes.push_back(n2);	
-	comp_current = 0;
+	comp_current = 1;
 	
 	if(order==1){ //Conductance of the inductor will be the same as the companion model even at T=0 
 		comp_conductance = extraInfo[0]/(2.0*val);
