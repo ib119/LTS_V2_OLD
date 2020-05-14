@@ -63,6 +63,9 @@ float Component::getValue(string val){
 			case 'K': case 'k':
 				mult = 1e3;
 				break;
+			case 'X': case 'x':
+				mult = 1e6;
+				break;
 			case 'G': case 'g':
 				mult = 1e9;
 				break;

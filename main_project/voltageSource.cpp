@@ -7,12 +7,23 @@ VoltageSource::VoltageSource(string name, vector<string> args, vector<float> ext
 {
     int n1 = stoi(args[0]);
     int n2 = stoi(args[1]);
-    float val = getValue(args[2]);
 
     nodes.push_back(n1);
     nodes.push_back(n2);
-    voltage = val;
+    
     types.push_back(1);
+
+    if(args.size() == 3){
+        float val = getValue(args[2]);
+        voltage = val;
+    }else{
+        string flow = args[2];
+        float val = getValue(args[3]);
+        voltage = val;
+        if(flow == "DC" || flow == "dc"){
+            types.push_back(4);
+        }
+    }
 }
 
 VoltageSource::VoltageSource(string _name, float _voltage, int n1, int n2)
@@ -20,6 +31,16 @@ VoltageSource::VoltageSource(string _name, float _voltage, int n1, int n2)
 
     nodes.push_back(n1);
     nodes.push_back(n2);
+    types.push_back(1);
+}
+
+VoltageSource::VoltageSource(string _name, float _voltage, int n1, int n2, bool isAC)
+    :Component{_name}, voltage{_voltage}{
+
+    nodes.push_back(n1);
+    nodes.push_back(n2);
+    types.push_back(1);
+    if(isAc) types.push_back(4);
 }
 
 float VoltageSource::getVoltage() const{

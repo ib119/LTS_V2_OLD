@@ -12,6 +12,7 @@ private:
 public:
     VoltageSource(string _name, vector<string> args, vector<float> extraInfo);
     VoltageSource(string _name, float _voltage, int n1, int n2);
+    VoltageSource(string _name, float _voltage, int n1, int n2, bool isAC);
     ~VoltageSource() = default;
 
     float getVoltage() const override;
