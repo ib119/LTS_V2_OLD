@@ -4,6 +4,8 @@
 #include <vector>
 #include <string>
 
+#include "enums.hpp"
+
 using namespace std;
 
 class Component
@@ -11,7 +13,7 @@ class Component
 protected:
     string name;
     vector<int> nodes;
-    vector<int> types; //indicates functionality of subComponents
+    vector<componentType> types; //indicates functionality of subComponents
     int subComponents;
 public:
     Component(string _name);
@@ -31,7 +33,7 @@ public:
 
 
     float getValue(string val);
-    vector<int> getTypes() const;
+    vector<componentType> getTypes() const;
 };
 
 #endif

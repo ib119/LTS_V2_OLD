@@ -91,6 +91,6 @@ float Component::getValue(string val){
 	}
 }
 
-vector<int> Component::getTypes() const{
+vector<componentType> Component::getTypes() const{
 	return types;
 }

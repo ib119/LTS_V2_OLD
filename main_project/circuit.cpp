@@ -4,6 +4,7 @@
 
 #include "circuit.hpp"
 #include "component.hpp"
+#include "enums.hpp"
 
 #include "voltageSource.hpp"
 #include "currentSource.hpp"
@@ -255,20 +256,20 @@ void Circuit::addComponent(string name, vector<string> args){
     // we can change it to a vector of strings if we need non float data later on
     extraInfo.push_back(getTimeStep());//extraInfo[0] is timeStep of circuit
 	comp* newComp = new comp(name, args, extraInfo);
-	vector<int> types = newComp->getTypes();
-	for(int type : types){
+	vector<componentType> types = newComp->getTypes();
+	for(auto type : types){
 		switch (type)
 		{
-		case 0:
+		case componentType::conductanceSource:
 			conductanceSources.push_back(newComp);
 			break;
-		case 1:
+		case componentType::voltageSource:
 			voltageSources.push_back(newComp);
 			break;
-		case 2:
+		case componentType::currentSource:
 			currentSources.push_back(newComp);
 			break;
-        case 3:
+        case componentType::vcUpdatable:
             vcUpdatables.push_back(newComp);
             break;
 		default:

@@ -13,7 +13,7 @@ VoltageSource::VoltageSource(string name, vector<string> args, vector<float> ext
     nodes.push_back(n2);
     voltage = val;
 
-    types.push_back(1);
+    types.push_back(componentType::voltageSource);
 }
 
 VoltageSource::VoltageSource(string _name, float _voltage, int n1, int n2)

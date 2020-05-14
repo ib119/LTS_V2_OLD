@@ -21,8 +21,9 @@ Capacitor::Capacitor(string name, vector<string> args, vector<float> extraInfo)
 		throw unsupportedIntegrationMethodOrderException();
 	}
 
-	types.push_back(0);
-	types.push_back(2);
+	types.push_back(componentType::conductanceSource);
+	types.push_back(componentType::currentSource);
+	types.push_back(componentType::vcUpdatable);
 }
 
 Capacitor::Capacitor(string _name,float c, int n1, int n2, float timeStep, int order)
@@ -38,9 +39,9 @@ Capacitor::Capacitor(string _name,float c, int n1, int n2, float timeStep, int o
 		throw unsupportedIntegrationMethodOrderException();
 	}
 
-	types.push_back(0);
-	types.push_back(2);
-	types.push_back(3);
+	types.push_back(componentType::conductanceSource);
+	types.push_back(componentType::currentSource);
+	types.push_back(componentType::vcUpdatable);
 }
 
 float Capacitor::getConductance() const{

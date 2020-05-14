@@ -13,7 +13,7 @@ CurrentSource::CurrentSource(string name, vector<string> args, vector<float> ext
     nodes.push_back(n2);
     current = val;
     
-    types.push_back(2);
+    types.push_back(componentType::currentSource);
 }
 
 CurrentSource::CurrentSource(string _name, float _current, int n1, int n2)
