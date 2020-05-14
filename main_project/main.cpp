@@ -26,11 +26,11 @@ using namespace std;
 // for debugging only
 void testCircuit(stringstream& buffer){
     buffer << "ExampleCircuit1" << endl;
-    buffer << "Vb 1 0 SIN(0 30 1)" << endl;
+    buffer << "Ib 1 0 SIN(0 30 1)" << endl;
     buffer << "R1 1 2 5" << endl;
     buffer << "R2 2 0 3" << endl;
     buffer << "R3 2 0 10" << endl;
-    buffer << "Is 2 0 2" << endl;
+    buffer << "Vs 2 0 2" << endl;
 }
 
 int main(int argc, char **argv){
