@@ -11,5 +11,9 @@ enum struct componentType{
     vcUpdatable = 3,
     timeUpdatable = 4 
 };
+enum struct sourceTypes{
+    DC = 0,
+    SIN = 1
+};
 
 #endif

@@ -5,6 +5,7 @@
 #include <string>
 
 #include "component.hpp"
+#include "waveform.hpp"
 
 class VoltageSource: public Component{
 private:
@@ -13,8 +14,7 @@ private:
     //used for dc
     float voltage;
 
-    //used for sin
-    float voltageOffset, voltageAmplitude, frequency, timeDelay, dampingFactor, phase;
+    Waveform voltageWaveform{};
 public:
     VoltageSource(string _name, vector<string> args, vector<float> extraInfo);
     VoltageSource(string _name, float _voltage, int n1, int n2);
@@ -22,10 +22,8 @@ public:
 
     void setupBasic(int n1, int n2);
     void setupDC(float voltage);
-    void setupSin(float startTime, float voltageOffset, float voltageAmplitude, float frequency, float timeDelay, float dampingFactor, float phase);
 
     void updateVals(float time);
-    void updateSinVoltage(float time);
 
     float getVoltage() const override;
 

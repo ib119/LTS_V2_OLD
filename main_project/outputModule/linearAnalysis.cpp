@@ -27,6 +27,7 @@ string runLinearTransience(Circuit& c, float t){
     vector<Component*> currentSources = c.getCurrentSourcesRef();
     vector<Component*> conductanceSources = c.getConductanceSourcesRef();
     vector<Component*> vcUpdatables = c.getVCUpdatablesRef();
+    vector<Component*> timeUpdatables = c.getTimeUpdatablesRef();
     int highestNodeNumber = c.getHighestNodeNumber();
 
     string outLine{};
@@ -71,8 +72,12 @@ string runLinearTransience(Circuit& c, float t){
         outLine += "," + to_string(cs->getCurrent());
     }
 
+    
     // update components before next calculation of b
-    c.updateComponents(t);
+    for(const auto &comp : timeUpdatables){
+        comp->updateVals(t+c.getTimeStep());
+    }
+    
     //update components based on current voltage/current
     float currentVoltage{}, currentCurrent{};
     for(const auto &up : vcUpdatables){
@@ -82,9 +87,14 @@ string runLinearTransience(Circuit& c, float t){
         v2 = nodes.at(1) == 0 ? 0 : x(nodes.at(1)-1);
         currentVoltage = v1 - v2;
 
-        currentCurrent = currentVoltage * up->getConductance();
+        //currentCurrent = currentVoltage * up->getConductance();
+        
+        // IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
+        // cout << A.format(CleanFmt) << endl << endl;
+        // cout << b.format(CleanFmt) << endl << endl;
+        // cout << x.format(CleanFmt) << endl <<endl;
 
-        up->updateVals(currentVoltage, currentCurrent, 1);
+        up->updateVals(currentVoltage, 0, 1);
     }
 
     //update b for calculations at next timestep

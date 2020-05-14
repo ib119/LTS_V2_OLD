@@ -14,9 +14,11 @@ Capacitor::Capacitor(string name, vector<string> args, vector<float> extraInfo)
 	nodes.push_back(n1);
 	nodes.push_back(n2);	
 	comp_current = 0;
+	prev_current = 0;
+	prev_voltage = 0;
 	
 	if(order==1){ //Conductance of the capacitor will be the same as the companion model even at T=0 
-		comp_conductance = (2.0*val)/extraInfo[0];
+		comp_conductance = (val)/extraInfo[0];
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}
@@ -34,7 +36,7 @@ Capacitor::Capacitor(string _name,float c, int n1, int n2, float timeStep, int o
 	comp_current = 0;
 	
 	if(order==1){ //Conductance of the capacitor will be the same as the companion model even at T=0 
-		comp_conductance = (2.0*c)/timeStep;
+		comp_conductance = (c)/timeStep;
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}
@@ -54,8 +56,10 @@ float Capacitor::getCurrent() const{
 
 void Capacitor::updateVals(float newVoltage, float newCurrent, int order){
 	if(order==1){ //using companion model for the trapezoid integration method.
-		newCurrent = (comp_conductance*newVoltage) - comp_current; //Current into capacitor = current through companion conductance - (as current source pointing towards + node) current source current.		
-		comp_current = - newCurrent - (comp_conductance*newVoltage);
+		// newCurrent = (comp_conductance*newVoltage) - comp_current; //Current into capacitor = current through companion conductance - (as current source pointing towards + node) current source current.		
+		// comp_current = -comp_conductance*newVoltage - newCurrent;
+		// comp_current = comp_conductance*newVoltage-comp_conductance*prev_voltage - comp_current;
+		comp_current = comp_conductance * newVoltage;
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}

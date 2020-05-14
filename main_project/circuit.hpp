@@ -64,6 +64,7 @@ public:
     vector<Component*>& getCurrentSourcesRef();
     vector<Component*>& getConductanceSourcesRef();
     vector<Component*>& getVCUpdatablesRef();
+    vector<Component*>& getTimeUpdatablesRef();
 
     // operator overload to add ability to read from iostream to set up circuit
     void operator<<(istream& input);
@@ -76,6 +77,7 @@ public:
         vector<float> extraInfo; // extra info will be passed to constructors and used if necessary
         // we can change it to a vector of strings if we need non float data later on
         extraInfo.push_back(getTimeStep());//extraInfo[0] is timeStep of circuit
+        extraInfo.push_back(getCurrentTime());//extraInfo[1] is current time of circuit
         comp* newComp = new comp(name, args, extraInfo);
         vector<componentType> types = newComp->getTypes();
         for(auto type : types){
@@ -93,15 +95,15 @@ public:
             case componentType::vcUpdatable:
                 vcUpdatables.push_back(newComp);
                 break;
+            case componentType::timeUpdatable:
+                timeUpdatables.push_back(newComp);
+                break;
             default:
                 break;
             }
         }
         components.push_back(newComp);
     }
-
-    // update components that nead updating
-    void updateComponents(float time);
 
     // operation to create A
     void setupA();
