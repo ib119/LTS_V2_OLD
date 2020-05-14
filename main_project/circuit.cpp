@@ -218,10 +218,10 @@ void Circuit::adjustB()
     {
         b(i) = voltageSources.at(j)->getVoltage();
     }
-    
+
     // code for debugging changes in A per itteration
-    IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
-    cout << b.format(CleanFmt) << endl << endl;
+    // IOFormat CleanFmt(4, 0, ", ", "\n", "[", "]");
+    // cout << b.format(CleanFmt) << endl << endl;
 }
 
 VectorXf Circuit::getB() const
