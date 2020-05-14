@@ -99,9 +99,18 @@ void exampleCircuit4(stringstream& buffer){
     buffer << "ic 2 0 1" << endl;
 }
 
+void exampleCircuit5(stringstream& buffer){
+    buffer << "ExampleCircuit1" << endl;
+    buffer << "Vb 1 0 SIN(0 30 1)" << endl;
+    buffer << "R1 1 2 5" << endl;
+    buffer << "R2 2 0 3" << endl;
+    buffer << "R3 2 0 10" << endl;
+    buffer << "Is 2 0 2" << endl;
+}
+
 int main(){
     stringstream buffer;
-    onlySINVoltageSources(buffer);
+    exampleCircuit1(buffer);
 
     Circuit c{};
 
