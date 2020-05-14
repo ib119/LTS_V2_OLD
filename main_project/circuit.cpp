@@ -4,6 +4,7 @@
 
 #include "circuit.hpp"
 #include "component.hpp"
+#include "enums.hpp"
 
 #include "voltageSource.hpp"
 #include "currentSource.hpp"
@@ -97,6 +98,9 @@ vector<Component*>& Circuit::getCurrentSourcesRef(){
 }
 vector<Component*>& Circuit::getConductanceSourcesRef(){
     return conductanceSources;
+}
+vector<Component*>& Circuit::getVCUpdatablesRef(){
+    return vcUpdatables;
 }
 
 // setupA definition

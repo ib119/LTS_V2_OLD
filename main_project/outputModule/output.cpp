@@ -15,6 +15,8 @@
 #include "./../capacitor.hpp"
 #include "./../inductor.hpp"
 
+#include "output.hpp"
+
 
 void outputCSV(Circuit& c, string outputFileName, float timeStep, float simulationTime){
     //get references to the components stored inside the circuit

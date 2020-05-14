@@ -1,6 +1,6 @@
 #include "circuit.hpp"
 #include "inductor.hpp"
-#include "./CustomExceptionClasses/unsupportedIntegrationMethodOrderException.cpp"
+#include "./CustomExceptionClasses/unsupportedIntegrationMethodOrderException.hpp"
 
 Inductor::Inductor(string name, vector<string> args, vector<float> extraInfo)
     :Component{name}
@@ -21,8 +21,9 @@ Inductor::Inductor(string name, vector<string> args, vector<float> extraInfo)
 		throw unsupportedIntegrationMethodOrderException();
 	}
 
-	types.push_back(0);
-	types.push_back(2);
+	types.push_back(componentType::conductanceSource);
+	types.push_back(componentType::currentSource);
+	types.push_back(componentType::vcUpdatable);
 }
 
 Inductor::Inductor(string _name,float l, int n1, int n2, float timeStep, int order)
@@ -38,8 +39,9 @@ Inductor::Inductor(string _name,float l, int n1, int n2, float timeStep, int ord
 		throw unsupportedIntegrationMethodOrderException();
 	}
 
-	types.push_back(0);
-	types.push_back(2);
+	types.push_back(componentType::conductanceSource);
+	types.push_back(componentType::currentSource);
+	types.push_back(componentType::vcUpdatable);
 }
 
 float Inductor::getConductance() const{

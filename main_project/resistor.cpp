@@ -13,7 +13,8 @@ Resistor::Resistor(string name, vector<string> args, vector<float> extraInfo)
     nodes.push_back(n1);
     nodes.push_back(n2);
     conductance = 1/val;
-    types.push_back(0);
+
+    types.push_back(componentType::conductanceSource);
 }
 
 Resistor::Resistor(string _name, float r, int n1, int n2)

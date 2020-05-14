@@ -19,6 +19,7 @@ protected:
     vector<Component*> voltageSources{};
     vector<Component*> currentSources{};
     vector<Component*> conductanceSources{};
+    vector<Component*> vcUpdatables{};
     vector<Component*> timeUpdatables{};
     int highestNodeNumber; //more efficient to keep updating when parsing netlist (otherwise have to iterate through all components again)
     //all time is in seconds
@@ -62,13 +63,42 @@ public:
     vector<Component*>& getVoltageSourcesRef();
     vector<Component*>& getCurrentSourcesRef();
     vector<Component*>& getConductanceSourcesRef();
+    vector<Component*>& getVCUpdatablesRef();
 
     // operator overload to add ability to read from iostream to set up circuit
     void operator<<(istream& input);
 
     // template function to add component, the class must have a constructor with the intputs as in the function bellow
+    // template <class comp>
+    // void addComponent(string name, vector<string> args);
     template <class comp>
-    void addComponent(string name, vector<string> args);
+    void addComponent(string name, vector<string> args){
+        vector<float> extraInfo; // extra info will be passed to constructors and used if necessary
+        // we can change it to a vector of strings if we need non float data later on
+        extraInfo.push_back(getTimeStep());//extraInfo[0] is timeStep of circuit
+        comp* newComp = new comp(name, args, extraInfo);
+        vector<componentType> types = newComp->getTypes();
+        for(auto type : types){
+            switch (type)
+            {
+            case componentType::conductanceSource:
+                conductanceSources.push_back(newComp);
+                break;
+            case componentType::voltageSource:
+                voltageSources.push_back(newComp);
+                break;
+            case componentType::currentSource:
+                currentSources.push_back(newComp);
+                break;
+            case componentType::vcUpdatable:
+                vcUpdatables.push_back(newComp);
+                break;
+            default:
+                break;
+            }
+        }
+        components.push_back(newComp);
+    }
 
     // update components that nead updating
     void updateComponents(float time);

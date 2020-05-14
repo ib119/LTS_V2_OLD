@@ -1,6 +1,8 @@
 #include <string>
 #include <cmath>
+#include <iostream>
 
+#include "enums.hpp"
 #include "voltageSource.hpp"
 
 VoltageSource::VoltageSource(string name, vector<string> args, vector<float> extraInfo)
@@ -84,7 +86,7 @@ VoltageSource::VoltageSource(string _name, float _voltage, int n1, int n2)
 void VoltageSource::setupBasic(int n1, int n2){
     nodes.push_back(n1);
     nodes.push_back(n2);
-    types.push_back(1);
+    types.push_back(componentType::voltageSource);
 }
 
 void VoltageSource::setupDC(float _voltage){
@@ -99,7 +101,7 @@ void VoltageSource::setupSin(float startTime, float _voltageOffset, float _volta
     timeDelay = _timeDelay;
     dampingFactor = _phase;
 
-    types.push_back(4);
+    types.push_back(componentType::timeUpdatable);
     sourceType = sourceTypes::SIN;
 
     updateSinVoltage(startTime);

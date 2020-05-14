@@ -1,5 +1,5 @@
 #include "component.hpp"
-#include "./CustomExceptionClasses/notSupportedByComponentException.cpp"
+#include "./CustomExceptionClasses/notSupportedByComponentException.hpp"
 
 using namespace std;
 
@@ -98,6 +98,6 @@ float Component::getValue(string val){
 	}
 }
 
-vector<int> Component::getTypes(){
+vector<componentType> Component::getTypes() const{
 	return types;
 }

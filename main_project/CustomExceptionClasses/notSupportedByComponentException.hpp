@@ -1,3 +1,6 @@
+#ifndef NOTSUPPORTEDBYCOMPONENTEXCEPTION
+#define NOTSUPPORTEDBYCOMPONENTEXCEPTION
+
 #include <exception>
 #include <string>
 
@@ -13,3 +16,5 @@ public:
     	return message.c_str();
     }
 };
+
+#endif
