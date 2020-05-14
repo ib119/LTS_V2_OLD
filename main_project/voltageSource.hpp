@@ -15,9 +15,6 @@ private:
     float voltage;
 
     Waveform voltageWaveform{};
-
-    //used for sin
-    float voltageOffset, voltageAmplitude, frequency, timeDelay, dampingFactor, phase;
 public:
     VoltageSource(string _name, vector<string> args, vector<float> extraInfo);
     VoltageSource(string _name, float _voltage, int n1, int n2);
