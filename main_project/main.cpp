@@ -10,7 +10,7 @@
 #include "resistor.cpp"
 #include "voltageSource.cpp"
 #include "currentSource.cpp"
-// #include "capacitor.cpp"
+#include "capacitor.cpp"
 #include "inductor.cpp"
 
 #include "inputModule/input.hpp"
