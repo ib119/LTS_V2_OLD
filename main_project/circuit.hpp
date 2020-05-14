@@ -19,6 +19,7 @@ protected:
     vector<Component*> voltageSources{};
     vector<Component*> currentSources{};
     vector<Component*> conductanceSources{};
+    vector<Component*> timeUpdatables{};
     int highestNodeNumber; //more efficient to keep updating when parsing netlist (otherwise have to iterate through all components again)
     //all time is in seconds
     float currentTime;
@@ -68,6 +69,9 @@ public:
     // template function to add component, the class must have a constructor with the intputs as in the function bellow
     template <class comp>
     void addComponent(string name, vector<string> args);
+
+    // update components that nead updating
+    void updateComponents(float time);
 
     // operation to create A
     void setupA();

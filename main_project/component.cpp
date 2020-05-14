@@ -26,6 +26,10 @@ void Component::updateVals(float newVoltage, float newCurrent, int order){
     throw notSupportedByComponentException();
 }
 
+void Component::updateVals(float time){
+    throw notSupportedByComponentException();
+}
+
 string Component::getName() const{
     return name;
 }
@@ -62,6 +66,9 @@ float Component::getValue(string val){
 				break;
 			case 'K': case 'k':
 				mult = 1e3;
+				break;
+			case 'X': case 'x':
+				mult = 1e6;
 				break;
 			case 'G': case 'g':
 				mult = 1e9;

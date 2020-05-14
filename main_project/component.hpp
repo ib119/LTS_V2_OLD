@@ -6,6 +6,14 @@
 
 using namespace std;
 
+namespace sourceTypes
+{
+    enum{
+        DC = 0,
+        SIN = 1
+    };
+};
+
 class Component
 {
 protected:
@@ -13,6 +21,9 @@ protected:
     vector<int> nodes;
     vector<int> types;
     int subComponents;
+
+    // just for convenience
+    const double PI = 3.1415926535897;
 public:
     Component(string _name);
     virtual ~Component() = 0; //destructor of base class should be virtual (purely virtual as component should be abstract)
@@ -28,7 +39,8 @@ public:
 
     // this should be used to update the value of the voltage and current accross a component after an iteration
     virtual void updateVals(float newVoltage, float newCurrent, int order);
-
+    // this should ebe used to update the time of the time dependant components
+    virtual void updateVals(float time);
 
     float getValue(string val);
     vector<int> getTypes();

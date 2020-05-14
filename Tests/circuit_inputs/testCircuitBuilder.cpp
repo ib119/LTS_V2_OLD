@@ -42,6 +42,15 @@ void onlyVoltageSources(stringstream& buffer){
     buffer << "V4 3 0 4" << endl;
 }
 
+// obviously going to spount nonsne since this circuit makes no sense
+void onlySINVoltageSources(stringstream& buffer){
+    buffer << "OnlySINVoltageSources" << endl;
+    buffer << "V1 0 1 SIN(0 1 1)" << endl;
+    buffer << "V2 1 2 SIN(0 1 1 0)" << endl;
+    buffer << "V3 2 3 SIN(0 1 1 0 0)" << endl;
+    buffer << "V4 3 0 SIN(0 1 1 0 0 0)" << endl;
+}
+
 void onlyCurrentSources(stringstream& buffer){
     buffer << "OnlyResistors" << endl;
     buffer << "I1 0 1 1" << endl;
@@ -90,9 +99,18 @@ void exampleCircuit4(stringstream& buffer){
     buffer << "ic 2 0 1" << endl;
 }
 
+void exampleCircuit5(stringstream& buffer){
+    buffer << "ExampleCircuit1" << endl;
+    buffer << "Vb 1 0 SIN(0 30 1)" << endl;
+    buffer << "R1 1 2 5" << endl;
+    buffer << "R2 2 0 3" << endl;
+    buffer << "R3 2 0 10" << endl;
+    buffer << "Is 2 0 2" << endl;
+}
+
 int main(){
     stringstream buffer;
-    exampleCircuit4(buffer);
+    exampleCircuit1(buffer);
 
     Circuit c{};
 
