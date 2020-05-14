@@ -1,6 +1,6 @@
 #include "circuit.hpp"
 #include "capacitor.hpp"
-#include "./CustomExceptionClasses/unsupportedIntegrationMethodOrderException.cpp"
+#include "./CustomExceptionClasses/unsupportedIntegrationMethodOrderException.hpp"
 
 Capacitor::Capacitor(string name, vector<string> args, vector<float> extraInfo)
     :Component{name}
@@ -40,6 +40,7 @@ Capacitor::Capacitor(string _name,float c, int n1, int n2, float timeStep, int o
 
 	types.push_back(0);
 	types.push_back(2);
+	types.push_back(3);
 }
 
 float Capacitor::getConductance() const{

@@ -12,6 +12,7 @@ CurrentSource::CurrentSource(string name, vector<string> args, vector<float> ext
     nodes.push_back(n1);
     nodes.push_back(n2);
     current = val;
+    
     types.push_back(2);
 }
 

@@ -19,6 +19,7 @@ protected:
     vector<Component*> voltageSources{};
     vector<Component*> currentSources{};
     vector<Component*> conductanceSources{};
+    vector<Component*> vcUpdatables{};
     int highestNodeNumber; //more efficient to keep updating when parsing netlist (otherwise have to iterate through all components again)
     //all time is in seconds
     float currentTime;
@@ -61,6 +62,7 @@ public:
     vector<Component*>& getVoltageSourcesRef();
     vector<Component*>& getCurrentSourcesRef();
     vector<Component*>& getConductanceSourcesRef();
+    vector<Component*>& getVCUpdatablesRef();
 
     // operator overload to add ability to read from iostream to set up circuit
     void operator<<(istream& input);

@@ -1,6 +1,6 @@
 #include "circuit.hpp"
 #include "inductor.hpp"
-#include "./CustomExceptionClasses/unsupportedIntegrationMethodOrderException.cpp"
+#include "./CustomExceptionClasses/unsupportedIntegrationMethodOrderException.hpp"
 
 Inductor::Inductor(string name, vector<string> args, vector<float> extraInfo)
     :Component{name}
@@ -40,6 +40,7 @@ Inductor::Inductor(string _name,float l, int n1, int n2, float timeStep, int ord
 
 	types.push_back(0);
 	types.push_back(2);
+	types.push_back(3);
 }
 
 float Inductor::getConductance() const{

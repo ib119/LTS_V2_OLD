@@ -1,3 +1,3 @@
 #!/bin/bash
 
-g++ main.cpp inductor.cpp voltageSource.cpp currentSource.cpp resistor.cpp component.cpp circuit.cpp
+g++ main.cpp inductor.cpp capacitor.cpp voltageSource.cpp currentSource.cpp resistor.cpp component.cpp circuit.cpp

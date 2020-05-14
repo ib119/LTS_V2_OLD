@@ -98,6 +98,9 @@ vector<Component*>& Circuit::getCurrentSourcesRef(){
 vector<Component*>& Circuit::getConductanceSourcesRef(){
     return conductanceSources;
 }
+vector<Component*>& Circuit::getVCUpdatablesRef(){
+    return vcUpdatables;
+}
 
 // setupA definition
 void Circuit::setupA()
@@ -265,6 +268,9 @@ void Circuit::addComponent(string name, vector<string> args){
 		case 2:
 			currentSources.push_back(newComp);
 			break;
+        case 3:
+            vcUpdatables.push_back(newComp);
+            break;
 		default:
 			break;
 		}
