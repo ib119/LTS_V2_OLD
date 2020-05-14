@@ -26,6 +26,10 @@ void Component::updateVals(float voltage, float current, int order){
     throw notSupportedByComponentException();
 }
 
+void Component::updateVals(float time){
+    throw notSupportedByComponentException();
+}
+
 string Component::getName() const{
     return name;
 }

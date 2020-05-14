@@ -265,6 +265,9 @@ void Circuit::addComponent(string name, vector<string> args){
 		case 2:
 			currentSources.push_back(newComp);
 			break;
+		case 4:
+			timeUpdatables.push_back(newComp);
+			break;
 		default:
 			break;
 		}

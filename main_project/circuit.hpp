@@ -19,6 +19,7 @@ protected:
     vector<Component*> voltageSources{};
     vector<Component*> currentSources{};
     vector<Component*> conductanceSources{};
+    vector<Component*> timeUpdatables{};
     int highestNodeNumber; //more efficient to keep updating when parsing netlist (otherwise have to iterate through all components again)
     //all time is in seconds
     float currentTime;
