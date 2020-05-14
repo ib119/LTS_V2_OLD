@@ -251,6 +251,7 @@ void Circuit::addComponent(string name, vector<string> args){
     vector<float> extraInfo; // extra info will be passed to constructors and used if necessary
     // we can change it to a vector of strings if we need non float data later on
     extraInfo.push_back(getTimeStep());//extraInfo[0] is timeStep of circuit
+    extraInfo.push_back(getCurrentTime());//extraInfo[1] is the starting Time of the circuit
 	comp* newComp = new comp(name, args, extraInfo);
 	vector<int> types = newComp->getTypes();
 	for(int type : types){
