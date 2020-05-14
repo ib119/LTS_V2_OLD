@@ -4,6 +4,8 @@
 #include "../resistor.hpp"
 #include "../currentSource.hpp"
 #include "../voltageSource.hpp"
+#include "../inductor.hpp"
+#include "../capacitor.hpp"
 
 void readSpice(Circuit& c, istream& file){
     string title;
