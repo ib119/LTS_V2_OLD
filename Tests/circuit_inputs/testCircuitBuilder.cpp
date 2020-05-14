@@ -44,11 +44,11 @@ void onlyVoltageSources(stringstream& buffer){
 
 // obviously going to spount nonsne since this circuit makes no sense
 void onlySINVoltageSources(stringstream& buffer){
-    buffer << "OnlyResistors" << endl;
-    buffer << "V1 0 1 SIN(0, 1, 1)" << endl;
-    buffer << "V2 1 2 SIN(0, 1, 1, 0)" << endl;
-    buffer << "V3 2 3 SIN(0, 1, 1, 0, 0)" << endl;
-    buffer << "V4 3 0 SIN(0, 1, 1, 0, 0, 0)" << endl;
+    buffer << "OnlySINVoltageSources" << endl;
+    buffer << "V1 0 1 SIN(0 1 1)" << endl;
+    buffer << "V2 1 2 SIN(0 1 1 0)" << endl;
+    buffer << "V3 2 3 SIN(0 1 1 0 0)" << endl;
+    buffer << "V4 3 0 SIN(0 1 1 0 0 0)" << endl;
 }
 
 void onlyCurrentSources(stringstream& buffer){

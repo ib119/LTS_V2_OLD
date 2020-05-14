@@ -24,10 +24,10 @@ public:
     void setupDC(float voltage);
     void setupSin(float startTime, float voltageOffset, float voltageAmplitude, float frequency, float timeDelay, float dampingFactor, float phase);
 
-    float getVoltage();
-
     void updateVals(float time);
     void updateSinVoltage(float time);
+
+    float getVoltage() const override;
 
     vector<int> getNodes() const override;
 };

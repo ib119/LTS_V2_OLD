@@ -105,7 +105,7 @@ void VoltageSource::setupSin(float startTime, float _voltageOffset, float _volta
     updateSinVoltage(startTime);
 }
 
-float VoltageSource::getVoltage(){
+float VoltageSource::getVoltage() const{
     return voltage;
 }
 
