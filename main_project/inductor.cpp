@@ -14,6 +14,8 @@ Inductor::Inductor(string name, vector<string> args, vector<float> extraInfo)
 	nodes.push_back(n1);
 	nodes.push_back(n2);	
 	comp_current = 0;
+
+
 	
 	if(order==1){ //Conductance of the inductor will be the same as the companion model even at T=0 
 		comp_conductance = extraInfo[0]/(2.0*val);
@@ -49,13 +51,13 @@ float Inductor::getConductance() const{
 }
 
 float Inductor::getCurrent() const{
-	return comp_current;
+	return -comp_current; //So it's in the right direction, as current source points towards negative.
 }
 
 void Inductor::updateVals(float newVoltage, float newCurrent, int order){
 	if(order==1){ //using companion model for the trapezoid integration method.
-		newCurrent = (comp_conductance*newVoltage) + comp_current; //Current into inductor = current through conductance + current source current		
-		comp_current = newCurrent + (comp_conductance*newVoltage);
+		//newCurrent = (comp_conductance*newVoltage) + comp_current; //Current into inductor = current through conductance + current source current		
+		comp_current =(2.0*comp_conductance*newVoltage)+comp_current;
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}
