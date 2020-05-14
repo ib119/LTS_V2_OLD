@@ -274,3 +274,9 @@ void Circuit::addComponent(string name, vector<string> args){
 	}
     components.push_back(newComp);
 }
+
+void Circuit::updateComponents(float time){
+    for(auto comp : timeUpdatables){
+        comp->updateVals(time);
+    }
+}

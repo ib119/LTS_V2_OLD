@@ -70,6 +70,9 @@ string runLinearTransience(Circuit& c, float t){
         outLine += "," + to_string(cs->getCurrent());
     }
 
+    // update components before next calculation of b
+    c.updateComponents(t);
+
     //update b for calculations at next timestep
     c.adjustB();
 

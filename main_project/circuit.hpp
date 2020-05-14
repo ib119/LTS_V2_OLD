@@ -70,6 +70,9 @@ public:
     template <class comp>
     void addComponent(string name, vector<string> args);
 
+    // update components that nead updating
+    void updateComponents(float time);
+
     // operation to create A
     void setupA();
     MatrixXf getA() const;
