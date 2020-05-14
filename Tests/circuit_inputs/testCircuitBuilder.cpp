@@ -115,6 +115,14 @@ void exampleCircuit6(stringstream& buffer){
     buffer << "C1 2 0 0.000001" << endl;
 }
 
+void exampleCircuit7(stringstream& buffer){
+    buffer << "ExampleCircuit1" << endl;
+    buffer << "I1 1 0 10" << endl;
+    buffer << "R1 1 0 1" << endl;
+    buffer << "R2 2 1 2" << endl;
+    buffer << "C1 2 0 1" << endl;
+}
+
 int main(){
     stringstream buffer;
     exampleCircuit1(buffer);

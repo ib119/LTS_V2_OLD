@@ -36,7 +36,7 @@ string Component::getName() const{
 
 
 // helper function to parse string with units into float
-float Component::getValue(string val){
+float Component::getValue(string val) const{
 	string units{};
 	float base{};//base number
 	float mult{};//what we multiply the number by
