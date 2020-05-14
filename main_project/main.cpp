@@ -5,21 +5,22 @@
 #include "circuit.hpp"
 
 // for debugging only
-#include "circuit.cpp"
-#include "component.cpp"
-#include "resistor.cpp"
-#include "voltageSource.cpp"
-#include "currentSource.cpp"
-#include "capacitor.cpp"
-#include "inductor.cpp"
+// #include "circuit.cpp"
+// #include "component.cpp"
+// #include "resistor.cpp"
+// #include "voltageSource.cpp"
+// #include "currentSource.cpp"
+// #include "capacitor.cpp"
+// #include "inductor.cpp"
 
 #include "inputModule/input.hpp"
 #include "outputModule/output.hpp"
+#include "outputModule/linearAnalysis.hpp"
 
 // for debugging only
-#include "inputModule/input.cpp"
-#include "outputModule/output.cpp"
-#include "outputModule/linearAnalysis.cpp"
+// #include "inputModule/input.cpp"
+// #include "outputModule/output.cpp"
+// #include "outputModule/linearAnalysis.cpp"
 
 using namespace std;
 

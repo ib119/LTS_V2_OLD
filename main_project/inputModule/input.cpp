@@ -6,6 +6,7 @@
 #include "../voltageSource.hpp"
 #include "../inductor.hpp"
 #include "../capacitor.hpp"
+#include "../component.hpp"
 
 void readSpice(Circuit& c, istream& file){
     string title;
