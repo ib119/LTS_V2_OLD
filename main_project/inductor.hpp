@@ -17,7 +17,7 @@ public:
 	float getConductance() const override;
 	vector<int> getNodes() const ;
 	float getCurrent() const override;
-	void updateVals(float voltage, float current, int order); //Called at the end of every iteration, after calculating node voltages and component currents.
+	void updateVals(float newVoltage, float newCurrent, int order) override; //Called at the end of every iteration, after calculating node voltages and component currents.
 };
 
 #endif

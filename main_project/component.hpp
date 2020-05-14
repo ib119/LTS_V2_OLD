@@ -27,7 +27,7 @@ public:
 
 
     // this should be used to update the value of the voltage and current accross a component after an iteration
-    virtual void updateVals(float voltage, float current, int order);
+    virtual void updateVals(float newVoltage, float newCurrent, int order);
 
 
     float getValue(string val);

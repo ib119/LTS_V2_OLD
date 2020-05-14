@@ -50,10 +50,10 @@ float Inductor::getCurrent() const{
 	return comp_current;
 }
 
-void Inductor::updateVals(float voltage, float current, int order){
+void Inductor::updateVals(float newVoltage, float newCurrent, int order){
 	if(order==1){ //using companion model for the trapezoid integration method.
-		current = (comp_conductance*voltage) + comp_current; //Current into inductor = current through conductance + current source current		
-		comp_current = current + (comp_conductance*voltage);
+		newCurrent = (comp_conductance*newVoltage) + comp_current; //Current into inductor = current through conductance + current source current		
+		comp_current = newCurrent + (comp_conductance*newVoltage);
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}

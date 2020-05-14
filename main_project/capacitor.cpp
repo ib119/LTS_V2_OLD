@@ -50,10 +50,10 @@ float Capacitor::getCurrent() const{
 	return comp_current;
 }
 
-void Capacitor::updateVals(float voltage, float current, int order){
+void Capacitor::updateVals(float newVoltage, float newCurrent, int order){
 	if(order==1){ //using companion model for the trapezoid integration method.
-		current = (comp_conductance*voltage) - comp_current; //Current into capacitor = current through companion conductance - (as current source pointing towards + node) current source current.		
-		comp_current = - current - (comp_conductance*voltage);
+		newCurrent = (comp_conductance*newVoltage) - comp_current; //Current into capacitor = current through companion conductance - (as current source pointing towards + node) current source current.		
+		comp_current = - newCurrent - (comp_conductance*newVoltage);
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}
