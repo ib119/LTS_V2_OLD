@@ -8,7 +8,7 @@
 #include "outputModule/output.hpp"
 #include "outputModule/linearAnalysis.hpp"
 
-// for debugging only
+/*// for debugging only
 #include "circuit.cpp"
 #include "component.cpp"
 #include "resistor.cpp"
@@ -20,24 +20,24 @@
 #include "inputModule/input.cpp"
 #include "outputModule/output.cpp"
 #include "outputModule/linearAnalysis.cpp"
-
+*/
 using namespace std;
 
 // for debugging only
 void testCircuit(stringstream& buffer){
     buffer << "ExampleCircuit1" << endl;
-    buffer << "Ib 1 0 SIN(0 30 1)" << endl;
-    buffer << "R1 1 2 5" << endl;
-    buffer << "R2 2 0 3" << endl;
-    buffer << "R3 2 0 10" << endl;
-    buffer << "Vs 2 0 2" << endl;
+    buffer << "Vb 1 0 10" << endl;
+    buffer << "R1 1 2 10" << endl;
+    //buffer << "R2 2 0 3" << endl;
+    buffer << "C2 2 0 0.01" << endl;
+    //buffer << "Vs 2 0 2" << endl;
 }
 
 int main(int argc, char **argv){
     //get optional input arguments
     string outputFileName = "out.csv";
-    float timeStep = 0.02; //seconds
-    float simulationTime = 1; //seconds
+    float timeStep = 0.0001; //seconds
+    float simulationTime = 0.5; //seconds
     if(argc > 1){
         outputFileName = argv[1];
     }
