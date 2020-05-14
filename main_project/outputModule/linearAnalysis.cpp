@@ -75,7 +75,7 @@ string runLinearTransience(Circuit& c, float t){
     
     // update components before next calculation of b
     for(const auto &comp : timeUpdatables){
-        comp->updateVals(t);
+        comp->updateVals(t+c.getTimeStep());
     }
     
     //update components based on current voltage/current
