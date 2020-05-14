@@ -77,6 +77,7 @@ public:
         vector<float> extraInfo; // extra info will be passed to constructors and used if necessary
         // we can change it to a vector of strings if we need non float data later on
         extraInfo.push_back(getTimeStep());//extraInfo[0] is timeStep of circuit
+        extraInfo.push_back(getCurrentTime());//extraInfo[1] is current time of circuit
         comp* newComp = new comp(name, args, extraInfo);
         vector<componentType> types = newComp->getTypes();
         for(auto type : types){
@@ -93,6 +94,9 @@ public:
                 break;
             case componentType::vcUpdatable:
                 vcUpdatables.push_back(newComp);
+                break;
+            case componentType::timeUpdatable:
+                timeUpdatables.push_back(newComp);
                 break;
             default:
                 break;
