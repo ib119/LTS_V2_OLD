@@ -64,6 +64,7 @@ public:
     vector<Component*>& getCurrentSourcesRef();
     vector<Component*>& getConductanceSourcesRef();
     vector<Component*>& getVCUpdatablesRef();
+    vector<Component*>& getTimeUpdatablesRef();
 
     // operator overload to add ability to read from iostream to set up circuit
     void operator<<(istream& input);
@@ -99,9 +100,6 @@ public:
         }
         components.push_back(newComp);
     }
-
-    // update components that nead updating
-    void updateComponents(float time);
 
     // operation to create A
     void setupA();

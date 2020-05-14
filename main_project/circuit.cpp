@@ -102,6 +102,9 @@ vector<Component*>& Circuit::getConductanceSourcesRef(){
 vector<Component*>& Circuit::getVCUpdatablesRef(){
     return vcUpdatables;
 }
+vector<Component*>& Circuit::getTimeUpdatablesRef(){
+    return timeUpdatables;
+}
 
 // setupA definition
 void Circuit::setupA()
@@ -278,10 +281,4 @@ void Circuit::addComponent(string name, vector<string> args){
 		}
 	}
     components.push_back(newComp);
-}
-
-void Circuit::updateComponents(float time){
-    for(auto comp : timeUpdatables){
-        comp->updateVals(time);
-    }
 }

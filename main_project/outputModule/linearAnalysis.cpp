@@ -27,6 +27,7 @@ string runLinearTransience(Circuit& c, float t){
     vector<Component*> currentSources = c.getCurrentSourcesRef();
     vector<Component*> conductanceSources = c.getConductanceSourcesRef();
     vector<Component*> vcUpdatables = c.getVCUpdatablesRef();
+    vector<Component*> timeUpdatables = c.getTimeUpdatablesRef();
     int highestNodeNumber = c.getHighestNodeNumber();
 
     string outLine{};
@@ -72,7 +73,10 @@ string runLinearTransience(Circuit& c, float t){
     }
 
     // update components before next calculation of b
-    c.updateComponents(t);
+    for(const auto &comp : timeUpdatables){
+        comp->updateVals(t);
+    }
+    
     //update components based on current voltage/current
     float currentVoltage{}, currentCurrent{};
     for(const auto &up : vcUpdatables){
