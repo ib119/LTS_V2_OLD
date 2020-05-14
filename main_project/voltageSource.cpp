@@ -25,11 +25,11 @@ VoltageSource::VoltageSource(string name, vector<string> args, vector<float> ext
                 switch (args.size()) // switch statment depending on how many arguments were given as some are not required
                 {
                 case 5:
-                    setupSin(
-                        extraInfo[1], // start time
+                    setupSin(extraInfo.at(1), // start time
                         getValue(flow.substr(4, flow.size()-4)), // voltage offset
                         getValue(args[3]), // voltage amplitude
-                        getValue(args[4].substr(0,args[4].size()-1)) // frequency
+                        getValue(args[4].substr(0,args[4].size()-1)), // frequency
+                        0, 0, 0 // defaults
                     );
                     break;
                 case 6:
@@ -38,7 +38,8 @@ VoltageSource::VoltageSource(string name, vector<string> args, vector<float> ext
                         getValue(flow.substr(4, flow.size()-4)), // voltage offset
                         getValue(args[3]), // voltage amplitude
                         getValue(args[4]), // frequency
-                        getValue(args[5].substr(0,args[5].size()-1)) // time delay
+                        getValue(args[5].substr(0,args[5].size()-1)), // time delay
+                        0, 0 // defaults
                     );
                     break;
                 case 7:
@@ -48,7 +49,8 @@ VoltageSource::VoltageSource(string name, vector<string> args, vector<float> ext
                         getValue(args[3]), // voltage amplitude
                         getValue(args[4]), // frequency
                         getValue(args[5]), // time delay
-                        getValue(args[6].substr(0,args[6].size()-1)) // damping factor
+                        getValue(args[6].substr(0,args[6].size()-1)), // damping factor
+                        0 // defaults
                     );
                     break;
                 case 8:
@@ -90,7 +92,7 @@ void VoltageSource::setupDC(float _voltage){
     sourceType = sourceTypes::DC;
 }
 
-void VoltageSource::setupSin(float startTime, float _voltageOffset, float _voltageAmplitude, float _frequency, float _timeDelay = 0, float _dampingFactor = 0, float _phase = 0){
+void VoltageSource::setupSin(float startTime, float _voltageOffset, float _voltageAmplitude, float _frequency, float _timeDelay, float _dampingFactor, float _phase){
     voltageOffset = _voltageOffset;
     voltageAmplitude = _voltageAmplitude;
     frequency = _frequency;
