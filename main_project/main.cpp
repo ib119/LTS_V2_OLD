@@ -25,21 +25,27 @@
 using namespace std;
 
 // for debugging only
-void exampleCircuit5(stringstream& buffer){
+void exampleCircuit7(stringstream& buffer){
     buffer << "ExampleCircuit1" << endl;
-    buffer << "Vb 1 0 SIN(0 30 1)" << endl;
-    buffer << "R1 1 2 5" << endl;
-    buffer << "R2 2 0 3" << endl;
-    buffer << "R3 2 0 10" << endl;
-    buffer << "Is 2 0 2" << endl;
+    buffer << "I1 1 0 10" << endl;
+    buffer << "R1 1 0 1" << endl;
+    buffer << "C1 2 0 0.00001" << endl;
+    buffer << "R2 2 0 100000" << endl;
+    buffer << "R3 1 2 1000" << endl;
 }
 
+void exampleCircuit6(stringstream& buffer){
+    buffer << "ExampleCircuit1" << endl;
+    buffer << "V1 1 0 10" << endl;
+    buffer << "R1 1 2 10000" << endl;
+    buffer << "C1 2 0 0.000001" << endl;
+}
 
 int main(int argc, char **argv){
     //get optional input arguments
     string outputFileName = "out.csv";
     float timeStep = 0.01; //seconds
-    float simulationTime = 1; //seconds
+    float simulationTime = 0.25; //seconds
     if(argc > 1){
         outputFileName = argv[1];
     }
@@ -57,9 +63,8 @@ int main(int argc, char **argv){
 
     // debugging only
     stringstream buffer;
-    exampleCircuit5(buffer);
+    exampleCircuit6(buffer);
     readSpice(c, buffer);
-
 
     // run simulation
     outputCSV(c, outputFileName, timeStep, simulationTime);
