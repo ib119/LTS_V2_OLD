@@ -11,9 +11,13 @@ using namespace std;
 // for debugging only
 void testCircuit(stringstream& buffer){
     buffer << "ExampleCircuit1" << endl;
-    buffer << "Ib 1 0 SIN(0 1 1)" << endl;
-    buffer << "R1 1 0 1" << endl;
-    buffer << "C1 1 0 1n" << endl;
+    buffer << "V1 2 1 SIN(0 10 10)" << endl;
+    buffer << "R1 3 2 2k" << endl;
+    buffer << "L1 1 0 100m" << endl;
+    buffer << "R2 3 0 5k" << endl;
+    buffer << "I1 4 3 .5" << endl;
+    buffer << "R3 4 0 10k" << endl;
+    buffer << "C1 4 0 1u" << endl;
 }
 
 int main(int argc, char **argv){
