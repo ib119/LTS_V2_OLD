@@ -62,3 +62,4 @@ main_project/LTS_V2
 
 # Test executables
 Tests/performanceTests/linearTransientTest
+Tests/performanceTests/CSVTester

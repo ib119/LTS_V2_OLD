@@ -25,27 +25,10 @@ Circuit::Circuit()
 
 //dealocate raw pointers
 Circuit::~Circuit()
-{   
-    //could just use component code below but decided to use
-    //the other vectors as we might get rid of the component vector
-    //later on 
-
+{
     for(auto comp : components){
         delete comp;
     }
-    // components.clear();
-    // for(auto vs : voltageSources){
-    //     delete vs;
-    // }
-    // voltageSources.clear();
-    // for(auto cs : currentSources){
-    //     delete cs;
-    // }
-    // currentSources.clear();
-    // for(auto g : conductanceSources){
-    //     delete g;
-    // }
-    // conductanceSources.clear();
 }
 
 string Circuit::getTitle() const{
