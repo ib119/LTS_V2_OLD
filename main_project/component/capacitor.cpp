@@ -56,6 +56,14 @@ float Capacitor::getCurrent() const{
 	return comp_current;
 }
 
+float Capacitor::getTotalCurrent(int order) const{
+	if(order == 1){ //companion model from Trapezoidal numerical integration method
+		return 2.0*comp_conductance*comp_voltage - comp_current;
+	}else{
+		throw unsupportedIntegrationMethodOrderException();
+	}
+}
+
 void Capacitor::updateVals(float newVoltage, float newCurrent, int order){
 	if(order==1){ //using companion model for the trapezoid integration method.
 		// newCurrent = (comp_conductance*newVoltage) - comp_current; //Current into capacitor = current through companion conductance - (as current source pointing towards + node) current source current.		
@@ -65,7 +73,7 @@ void Capacitor::updateVals(float newVoltage, float newCurrent, int order){
 		comp_current = (2.0*comp_conductance*newVoltage) - comp_current; //From trapezoid companion circuit diagram for capacitor. newVoltage = Vn, 		
 		//prev_voltage = newVoltage;		
 	//	prev_current = comp_current;		
-	
+		comp_voltage = newVoltage;
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}

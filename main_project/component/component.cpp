@@ -19,6 +19,10 @@ float Component::getCurrent() const{
    throw notSupportedByComponentException();
 }
 
+virtual float getTotalCurrent() const{
+	throw notSupportedByComponentException();
+}
+
 float Component::getConductance() const{
     throw notSupportedByComponentException();
 }

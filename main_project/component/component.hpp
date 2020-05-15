@@ -19,11 +19,11 @@ public:
     Component(string _name);
     virtual ~Component() = 0; //destructor of base class should be virtual (purely virtual as component should be abstract)
 
-    //why is there a need to pass node to getter? A resistor has only one associated resistance?
     virtual float getConductance() const;
     virtual float getVoltage() const;
-    virtual float getCurrent() const;
-    
+    virtual float getCurrent() const; //For complex components, this returns the current through the companion model's current source rather than through the whole component
+    virtual float getTotalCurrent(int order = 1) const; //For complex components, this return the current through the whole component
+
     string getName() const;
     virtual vector<int> getNodes() const = 0;
 

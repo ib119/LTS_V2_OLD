@@ -56,10 +56,19 @@ float Inductor::getCurrent() const{
 	return -comp_current; //So it's in the right direction, as current source points towards negative.
 }
 
+float Inductor::getTotalCurrent(int order) const{
+	if(order == 1){ //companion model from Trapezoidal numerical integration method
+		return -(2.0*comp_conductance*comp_voltage + comp_current); //negative as current flows from n1 to n2 of inductor
+	}else{
+		throw unsupportedIntegrationMethodOrderException();
+	}
+}
+
 void Inductor::updateVals(float newVoltage, float newCurrent, int order){
 	if(order==1){ //using companion model for the trapezoid integration method.
 		//newCurrent = (comp_conductance*newVoltage) + comp_current; //Current into inductor = current through conductance + current source current		
 		comp_current =(2.0*comp_conductance*newVoltage)+comp_current;
+		comp_voltage = newVoltage;
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}
