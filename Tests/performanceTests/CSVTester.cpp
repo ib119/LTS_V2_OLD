@@ -160,7 +160,7 @@ int main(int argc, char **argv){
 
     // how many resistors to use
     int minResistors = 0;
-    int maxResistors = 100;
+    int maxResistors = 50;
     int deltaResistors = 1;
 
     for(int resistorCount = minResistors; resistorCount < maxResistors; resistorCount += deltaResistors){
@@ -170,10 +170,10 @@ int main(int argc, char **argv){
 
         setupBasic(*c, timeStep);
         readSpice(*c, buffer);
-        outputCSV(*c, "output_ignore.txt", timeStep, simulationTime);
+        outputCSV(*c, "output/ignore.csv", timeStep, simulationTime);
         
         auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - stop);
+        auto duration = duration_cast<microseconds>(stop - start);
         auto timeTaken = duration.count();
         outputFile << resistorCount << "," << timeTaken/1000.0f << endl;
     }
@@ -187,11 +187,11 @@ int main(int argc, char **argv){
     c = new Circuit{};
 
     outputFile.open("output/capacitorsTest.csv");
-    outputFile << "Resistor count, Simulation Time (seconds)" << endl;
+    outputFile << "Capacitor count, Simulation Time (seconds)" << endl;
 
     // how many capacitor to use
     int minCapacitors = 0;
-    int maxCapacitors = 100;
+    int maxCapacitors = 50;
     int deltaCapacitors = 1;
 
     for(int capacitorCount = minCapacitors; capacitorCount < maxCapacitors; capacitorCount += deltaCapacitors){
@@ -201,10 +201,10 @@ int main(int argc, char **argv){
 
         setupBasic(*c, timeStep);
         readSpice(*c, buffer);
-        outputCSV(*c, "output_ignore.txt", timeStep, simulationTime);
+        outputCSV(*c, "output/ignore.csv", timeStep, simulationTime);
         
         auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - stop);
+        auto duration = duration_cast<microseconds>(stop - start);
         auto timeTaken = duration.count();
         outputFile << capacitorCount << "," << timeTaken/1000.0f << endl;
     }
@@ -222,7 +222,7 @@ int main(int argc, char **argv){
 
     // how many inductors to use
     int minInductors = 0;
-    int maxInductors = 100;
+    int maxInductors = 50;
     int deltaInductors = 1;
 
     for(int inductorCount = minInductors; inductorCount < maxInductors; inductorCount += deltaInductors){
@@ -235,7 +235,7 @@ int main(int argc, char **argv){
         outputCSV(*c, "output_ignore.txt", timeStep, simulationTime);
         
         auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - stop);
+        auto duration = duration_cast<microseconds>(stop - start);
         auto timeTaken = duration.count();
         outputFile << inductorCount << "," << timeTaken/1000.0f << endl;
     }
