@@ -35,3 +35,19 @@ One idea we were looking at for the future when condiering more complex componen
 1) Implenting them using their IV characteristics and using Newton method to solve the simultaneous equationsof each equation of nodal analysis
 
 2) Using Newton method to find the operating point of a small signal equivalent model of each nonlinear component and then solving the system as a linear model
+
+# A few days later
+
+Since the last log, we've made a few key changes
+
+1) We've separated our project into modules, this will allow us to have more flexability later on when we start adding feature. It also lets us consider each module as an independant library which simply comuicate with each other, and for the most part, are completely independant.
+
+2) We've added CMake to our project, that way we can compile our projects quicker without having to worry about the increasing number of files that we are generating
+
+3) We've added inductors and capacitors to our project, and they seem to be working proerperly
+
+4) We have voltage and current sources that change over time. With this, we feel like we have just about implemented the minumum requirements needed to pass the module.
+
+Looking into the near future, our main priorities are to implement a timing system we can use to test the efficiency of our code. So far it has been quite fast, but as we haven't yet implemented a timer, we can't be completely sure.
+
+Since we feel like we have time, and could not find a good reason to choose one method over the other, we are plannig on implementing both models mentioned above for non linear components. With the added timing system we will then test for efficiency. While trying to produce equal accuracy with both methods. The modular nature of our software design allows us to easily swap in both methods with very minor changes. Quick prototyping then becomes easy and straight forward.

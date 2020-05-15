@@ -1,0 +1,3 @@
+#!/bin/bash
+
+g++ -o linearTransientTest -I./../../main_project/ linearTransientTest.cpp ../../main_project/circuit/circuit.cpp ../../main_project/component/component.cpp ../../main_project/component/resistor.cpp ../../main_project/component/capacitor.cpp ../../main_project/component/inductor.cpp ../../main_project/component/voltageSource.cpp ../../main_project/component/currentSource.cpp ../../main_project/component/waveform.cpp ../../main_project/input/input.cpp ../../main_project/output/output.cpp ../../main_project/output/linearAnalysis.cpp 

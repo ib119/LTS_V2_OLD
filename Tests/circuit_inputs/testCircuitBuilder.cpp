@@ -2,26 +2,19 @@
 #include <fstream>
 #include <sstream>
 
-#include "./../../main_project/circuit.hpp"
-#include "./../../main_project/circuit.cpp"
+#include <input/input.hpp>
+#include <input/input.cpp>
 
-#include "./../../main_project/component.hpp"
-#include "./../../main_project/component.cpp"
+#include <circuit/circuit.hpp>
+#include <circuit/circuit.cpp>
 
-#include "./../../main_project/resistor.hpp"
-#include "./../../main_project/resistor.cpp"
-
-#include "./../../main_project/currentSource.hpp"
-#include "./../../main_project/currentSource.cpp"
-
-#include "./../../main_project/voltageSource.hpp"
-#include "./../../main_project/voltageSource.cpp"
-
-#include "./../../main_project/inductor.hpp"
-#include "./../../main_project/inductor.cpp"
-
-#include "./../../main_project/inputModule/input.hpp"
-#include "./../../main_project/inputModule/input.cpp"
+#include <component/component.cpp>
+#include <component/resistor.cpp>
+#include <component/capacitor.cpp>
+#include <component/inductor.cpp>
+#include <component/voltageSource.cpp>
+#include <component/currentSource.cpp>
+#include <component/waveform.cpp>
 
 using namespace std;
 
@@ -132,9 +125,23 @@ void exampleCircuit8(stringstream& buffer){
     buffer << "Vs 2 0 2" << endl;
 }
 
+void testingUnits(stringstream& buffer){
+    buffer << "ExampleCircuit1" << endl;
+    buffer << "R1 0 1 1u" << endl;
+    buffer << "R2 1 2 10" << endl;
+    buffer << "R3 2 3 1MEG" << endl;
+    buffer << "R4 3 0 .10K" << endl;
+}
+
+// pass |= 10e-15 == c.getValue("10u");
+// pass |= 10 == c.getValue("10aksjdkjaskd");
+// pass |= 0.01== c.getValue("10mlamsldkasdasd");
+// pass |= 10000000 == c.getValue("10MEG");
+// pass |= 202401 == c.getValue(".202401G");
+
 int main(){
     stringstream buffer;
-    exampleCircuit1(buffer);
+    testingUnits(buffer);
 
     Circuit c{};
 

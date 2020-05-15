@@ -1,0 +1,9 @@
+add_library(component
+    component.cpp
+    resistor.cpp
+    capacitor.cpp
+    inductor.cpp
+    voltageSource.cpp
+    currentSource.cpp
+    waveform.cpp
+)

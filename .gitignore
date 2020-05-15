@@ -46,12 +46,19 @@ a.out
 main_project/Eigen
 dependancies/Eigen
 
+#CSV files
+*.csv
+
+# CMAKE
+main_project/bin
+main_project/build
+
 # Binaries
 Tests/circuit_inputs/testGetValue
 Tests/circuit_inputs/testCircuitBuilder
 main_project/main
-
-#CSV files
-*.csv
-
 main_project/mainDebugging
+main_project/LTS_V2
+
+# Test executables
+Tests/performanceTests/linearTransientTest
