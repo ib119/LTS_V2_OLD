@@ -13,6 +13,7 @@ void testCircuit(stringstream& buffer){
     buffer << "ExampleCircuit1" << endl;
     buffer << "Ib 1 0 SIN(0 1 1)" << endl;
     buffer << "R1 1 0 1" << endl;
+    buffer << "C1 1 0 1n" << endl;
 }
 
 int main(int argc, char **argv){

@@ -4,6 +4,8 @@
 #include <vector>
 #include <circuit/circuit.hpp>
 #include <component/component.hpp>
+#include <component/capacitor.hpp>
+#include <component/inductor.hpp>
 
 #include "linearAnalysis.hpp"
 
@@ -28,15 +30,24 @@ void outputCSV(Circuit& c, string outputFileName, float timeStep, float simulati
     }
     //conductance sources
     for(const auto &gs : conductanceSources){
+        if(typeid(*gs) == typeid(Inductor) || typeid(*gs) == typeid(Capacitor)){
+            continue; //don't want to display current through the companion model's resistor
+        }
         outputFile << ",i_R" + gs->getName();
     }
     //voltage sources
     for(const auto &vs : voltageSources){
         outputFile << ",i_V" + vs->getName();
     }
-    //current sources (do we care about outputing current through current sources?)
+    //current sources + other components
     for(const auto &cs : currentSources){
-        outputFile << ",i_I" + cs->getName();
+        if(typeid(*cs) == typeid(Capacitor)){
+            outputFile << ",i_C" + cs->getName();
+        }else if(typeid(*cs) == typeid(Inductor)){
+            outputFile << ",i_L" + cs->getName();
+        }else{ //component = currentSource
+            outputFile << ",i_I" + cs->getName();
+        }
     }
     outputFile << "\n";
     

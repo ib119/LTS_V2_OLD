@@ -2,6 +2,8 @@
 #include <string>
 #include <circuit/circuit.hpp>
 #include <component/component.hpp>
+#include <component/capacitor.hpp>
+#include <component/inductor.hpp>
 
 #include "linearAnalysis.hpp"
 
@@ -41,6 +43,10 @@ string runLinearTransience(Circuit& c, float t){
     float voltage{}, v1{}, v2{};
     float current{};
     for(const auto &gs : conductanceSources){
+        if(typeid(*gs) == typeid(Inductor) || typeid(*gs) == typeid(Capacitor)){
+            continue; //don't want to display current through the companion model's resistor
+        }
+        
         nodes = gs->getNodes();
 
         v1 = nodes.at(0) == 0 ? 0 : x(nodes.at(0)-1);
@@ -61,7 +67,11 @@ string runLinearTransience(Circuit& c, float t){
 
     //output current through current sources/other components
     for(const auto &cs : currentSources){
-        outLine += "," + to_string(cs->getCurrent());
+        if((typeid(*cs) == typeid(Capacitor)) || typeid(*cs) == typeid(Inductor)){ //component = inductor/capacitor
+            outLine += "," + to_string(cs->getTotalCurrent());
+        }else{ //component = currentSource
+            outLine += "," + to_string(cs->getCurrent());
+        }
     }
 
     
