@@ -2,7 +2,6 @@
 #include <vector>
 #include <fstream>
 #include <chrono> 
-#include <iomanip>
 
 #include <circuit/circuit.hpp>
 #include <input/input.hpp>
@@ -111,8 +110,24 @@ int main(int argc, char **argv){
     //timestep scaling test (simple circuit)
     c = new Circuit{};
     outputFile.open("output/timeStepTest.csv");
+    outputFile << "Timestep (seconds), Simulation Time (seconds)" << endl;
 
-    ////// didin't really undestand what this one was doing
+    // how many timesteps to use
+    float maxTimeStep1 = 1;
+    float minTimeStep1 = 1e-6;
+    float deltaTimeStep1 = 1e-7;
+
+    for(float timeStep{maxTimeStep1}; timeStep>=minTimeStep1; timeStep-=deltaTimeStep1){
+        auto start = high_resolution_clock::now(); 
+        timestep1(buffer);
+        setupBasic(*c, timeStep);
+        readSpice(*c, buffer);
+        outputCSV(*c, "output/ignore.csv", timeStep, simulationTime);
+        auto stop = high_resolution_clock::now(); 
+        auto duration = duration_cast<microseconds>(stop - start);
+        auto count = duration.count();
+        outputFile << timeStep << "," << count/1000.0f <<endl;
+    }
 
     delete c;
     outputFile.close();
@@ -122,8 +137,25 @@ int main(int argc, char **argv){
     //timestep scaling test (more complicated circuit containing inductors/capacitors)
     c = new Circuit{};
     outputFile.open("output/timeStepTestComplex.csv");
+    outputFile << "Timestep (seconds), Simulation Time (seconds)" << endl;
     
-    ////// didin't really undestand what this one was doing
+    // how many timesteps to use
+    float maxTimeStep2 = 1;
+    float minTimeStep2 = 1e-6;
+    float deltaTimeStep2 = 1e-7;
+
+    float smallestTimestep2 = 1e-6;
+    for(float timeStep{maxTimeStep2}; timeStep>=minTimeStep2; timeStep-=deltaTimeStep2){
+        auto start = high_resolution_clock::now(); 
+        timestep2(buffer);
+        setupBasic(*c, timeStep);
+        readSpice(*c, buffer);
+        outputCSV(*c, "output/ignore.csv", timeStep, simulationTime);
+        auto stop = high_resolution_clock::now(); 
+        auto duration = duration_cast<microseconds>(stop - start);
+        auto count = duration.count();
+        outputFile << timeStep << "," << count/1000.0f <<endl;
+    }
 
     delete c;
     outputFile.close();
@@ -133,8 +165,24 @@ int main(int argc, char **argv){
     //simulation time scaling test (simple circuit)
     c = new Circuit{};
     outputFile.open("output/timeScalingTest.csv");
+    outputFile << "Simulation end time (seconds), Simulation Time (seconds)" << endl;
     
-    ////// didin't really undestand what this one was doing#
+    // how many simulationTimes to use
+    float minSimulationTime1 = 0.5;
+    float maxSimulationTime1 = 30;
+    float deltaSimulationTime1 = .5;
+    
+    for(float simulationTime{minSimulationTime1}; simulationTime<=maxSimulationTime1; simulationTime+=deltaSimulationTime1){
+        auto start = high_resolution_clock::now(); 
+        timestep1(buffer);
+        setupBasic(*c, simulationTime);
+        readSpice(*c, buffer);
+        outputCSV(*c, "output/ignore.csv", timeStep, simulationTime);
+        auto stop = high_resolution_clock::now(); 
+        auto duration = duration_cast<microseconds>(stop - start);
+        auto count = duration.count();
+        outputFile << simulationTime << "," << count/1000.0f <<endl;
+    }
 
     delete c;
     outputFile.close();
@@ -144,8 +192,24 @@ int main(int argc, char **argv){
     //simulation time scaling test (more complicated circuit containing inductors/capacitors)
     c = new Circuit{};
     outputFile.open("output/timeScalingTestComplex.csv");
+    outputFile << "Simulation end time (seconds), Simulation Time (seconds)" << endl;
     
-    ////// didin't really undestand what this one was doing
+    // how many simulationTimes to use
+    float minSimulationTime2 = 0.5;
+    float maxSimulationTime2 = 30;
+    float deltaSimulationTime2 = .5;
+
+    for(float simulationTime{minSimulationTime2}; simulationTime<=maxSimulationTime2; simulationTime+=deltaSimulationTime2){
+        auto start = high_resolution_clock::now(); 
+        timestep2(buffer);
+        setupBasic(*c, simulationTime);
+        readSpice(*c, buffer);
+        outputCSV(*c, "output/ignore.csv", timeStep, simulationTime);
+        auto stop = high_resolution_clock::now(); 
+        auto duration = duration_cast<microseconds>(stop - start);
+        auto count = duration.count();
+        outputFile << simulationTime << "," << count/1000.0f <<endl;
+    }
 
     delete c;
     outputFile.close();
