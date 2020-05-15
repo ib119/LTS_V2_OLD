@@ -1,5 +1,6 @@
+#include <customExceptionClasses/notSupportedByComponentException.hpp>
+
 #include "component.hpp"
-#include "./CustomExceptionClasses/notSupportedByComponentException.hpp"
 
 using namespace std;
 

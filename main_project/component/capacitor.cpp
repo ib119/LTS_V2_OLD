@@ -1,6 +1,8 @@
-#include "circuit.hpp"
+#include <string>
+#include <vector>
+#include <customExceptionClasses/unsupportedIntegrationMethodOrderException.hpp>
+
 #include "capacitor.hpp"
-#include "./CustomExceptionClasses/unsupportedIntegrationMethodOrderException.hpp"
 
 Capacitor::Capacitor(string name, vector<string> args, vector<float> extraInfo)
     :Component{name}

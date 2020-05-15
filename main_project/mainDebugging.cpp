@@ -6,6 +6,22 @@
 #include <input/input.hpp>
 #include <output/output.hpp>
 
+// for debugging only
+#include <circuit/circuit.cpp>
+
+#include <component/component.cpp>
+#include <component/resistor.cpp>
+#include <component/capacitor.cpp>
+#include <component/inductor.cpp>
+#include <component/voltageSource.cpp>
+#include <component/currentSource.cpp>
+#include <component/waveform.cpp>
+
+#include <input/input.cpp>
+
+#include <output/output.cpp>
+#include <output/linearAnalysis.cpp>
+
 using namespace std;
 
 // for debugging only
@@ -15,26 +31,12 @@ void testCircuit(stringstream& buffer){
     buffer << "R1 1 0 1" << endl;
 }
 
-int main(int argc, char **argv){
+int main(){
     //get optional input arguments
     string outputFileName = "out.csv";
     float timeStep = 0.02; //seconds
     float simulationTime = 1; //seconds
-    if(argc > 1){
-        outputFileName = argv[1];
-    }
-    if(argc > 2){
-        timeStep = (float)atof(argv[2]);
-    }
-    if(argc > 3){
-        simulationTime = (float)atof(argv[3]);
-    }
     
-    // // setup circuit
-    // Circuit c{};
-    // setupBasic(c, timeStep);
-    // readSpice(c, cin);
-
     // setup circuit
     Circuit c{};
     setupBasic(c, timeStep);

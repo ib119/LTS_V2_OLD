@@ -1,7 +1,8 @@
 #ifndef CAPACITOR_HPP
 #define CAPACITOR_HPP
 
-#include "circuit.hpp"
+#include "component.hpp"
+
 class Capacitor: public Component{
 private:
 	float capacitance;

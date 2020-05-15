@@ -1,7 +1,8 @@
 #ifndef INDUCTOR_HPP
 #define INDUCTOR_HPP
 
-#include "circuit.hpp"
+#include "component.hpp"
+
 class Inductor: public Component{
 private:
 	float inductance;

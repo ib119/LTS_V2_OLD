@@ -3,14 +3,14 @@
 #include <vector>
 
 #include "circuit.hpp"
-#include "component.hpp"
-#include "enums.hpp"
 
-#include "voltageSource.hpp"
-#include "currentSource.hpp"
-#include "resistor.hpp"
-#include "capacitor.hpp"
-#include "inductor.hpp"
+#include <component/enums.hpp>
+#include <component/component.hpp>
+#include <component/voltageSource.hpp>
+#include <component/currentSource.hpp>
+#include <component/resistor.hpp>
+#include <component/capacitor.hpp>
+#include <component/inductor.hpp>
 
 using namespace std;
 using namespace Eigen;

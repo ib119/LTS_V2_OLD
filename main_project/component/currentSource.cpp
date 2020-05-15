@@ -1,8 +1,6 @@
 #include <string>
-#include <cmath>
-#include <iostream>
+#include <vector>
 
-#include "enums.hpp"
 #include "currentSource.hpp"
 
 CurrentSource::CurrentSource(string name, vector<string> args, vector<float> extraInfo)
