@@ -67,7 +67,7 @@ string runLinearTransience(Circuit& c, float t){
         outLine += "," + to_string(current);
     }
 
-    //output current through current sources
+    //output current through current sources/other components
     for(const auto &cs : currentSources){
         outLine += "," + to_string(cs->getCurrent());
     }
