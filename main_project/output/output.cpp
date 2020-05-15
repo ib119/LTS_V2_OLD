@@ -1,22 +1,13 @@
+#include <string>
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <vector>
-#include <Eigen/Dense>
+#include <circuit/circuit.hpp>
+#include <component/component.hpp>
 
 #include "linearAnalysis.hpp"
 
-#include "./../circuit.hpp"
-#include "./../component.hpp"
-
-#include "./../voltageSource.hpp"
-#include "./../currentSource.hpp"
-#include "./../resistor.hpp"
-#include "./../capacitor.hpp"
-#include "./../inductor.hpp"
-
 #include "output.hpp"
-
 
 void outputCSV(Circuit& c, string outputFileName, float timeStep, float simulationTime){
     //get references to the components stored inside the circuit

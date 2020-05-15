@@ -1,17 +1,9 @@
 #include <vector>
 #include <string>
+#include <circuit/circuit.hpp>
+#include <component/component.hpp>
 
 #include "linearAnalysis.hpp"
-
-#include "./../circuit.hpp"
-#include "./../component.hpp"
-
-#include "./../voltageSource.hpp"
-#include "./../currentSource.hpp"
-#include "./../resistor.hpp"
-#include "./../capacitor.hpp"
-#include "./../inductor.hpp"
-
 
 //these don't change during simulation with linear components
 void linearSetup(Circuit& c){

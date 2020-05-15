@@ -3,8 +3,7 @@
 
 #include <iostream>
 #include <string>
-
-#include "../circuit.hpp"
+#include <circuit/circuit.hpp>
 
 using namespace std;
 
