@@ -51,9 +51,11 @@ dependancies/Eigen
 
 # CMAKE
 main_project/bin
+main_project/build
 
 # Binaries
 Tests/circuit_inputs/testGetValue
 Tests/circuit_inputs/testCircuitBuilder
 main_project/main
 main_project/mainDebugging
+main_project/LTS_V2
