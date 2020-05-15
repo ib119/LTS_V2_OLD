@@ -1,27 +1,31 @@
 #include <iostream>
 
-#include "./../../main_project/circuit.hpp"
-#include "./../../main_project/circuit.cpp"
-#include "./../../main_project/circuitInput.cpp"
+#include <circuit/circuit.hpp>
+#include <circuit/circuit.cpp>
 
-#include "./../../main_project/component.hpp"
-#include "./../../main_project/component.cpp"
+#include <component/component.hpp>
+#include <component/component.cpp>
 
-#include "./../../main_project/resistor.hpp"
-#include "./../../main_project/resistor.cpp"
+#include <component/resistor.hpp>
+#include <component/resistor.cpp>
 
 using namespace std;
 
 int main(){
-    bool pass = false;
+    bool pass = true;
     // sets up a component to allow acces to get value function
     Resistor c{"R1", 0, 0, 1};
     
-    pass |= 10e-15 == c.getValue("10u");
-    pass |= 10 == c.getValue("10aksjdkjaskd");
-    pass |= 0.01== c.getValue("10mlamsldkasdasd");
-    pass |= 10000000 == c.getValue("10MEG");
-    pass |= 202401 == c.getValue(".202401G");
+    float x = c.getValue("10f");
+    pass &= (float)1e-14 == x;
+    x = c.getValue("10aksjdkjaskd");
+    pass &= (float)10.0 == x;
+    x = c.getValue("10mlamsldkasdasd");
+    pass &= abs((float)0.01 - x) < 0.00001; // has to be this way due to how binary binary numbers can't represent 0.01 exactly
+    x = c.getValue("10MEG");
+    pass &= (float)10000000 == x;
+    x = c.getValue(".202401G");
+    pass &= (float)202401000 == x;
 
     if(pass){
         cout << "SUCCESS";

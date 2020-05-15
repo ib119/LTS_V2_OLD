@@ -52,9 +52,9 @@ float Component::getValue(string val) const{
 			break;
 		}
 	}
-	if(ss =! -1){
+	if(ss != -1){
 		base = stof(val.substr(0,ss));
-		units = val.substr(ss, val.size() - 1 - ss);
+		units = val.substr(ss, val.size() - ss);
 		char u = units[0];
 		switch(u){
 			case 'F': case 'f':
