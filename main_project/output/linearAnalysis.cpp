@@ -68,7 +68,11 @@ string runLinearTransience(Circuit& c, float t){
     //output current through current sources/other components
     for(const auto &cs : currentSources){
         if((typeid(*cs) == typeid(Capacitor)) || typeid(*cs) == typeid(Inductor)){ //component = inductor/capacitor
-            outLine += "," + to_string(cs->getTotalCurrent());
+         	nodes = cs->getNodes();
+		v1 = nodes.at(0) == 0 ? 0 : x(nodes.at(0)-1);
+        	v2 = nodes.at(1) == 0 ? 0 : x(nodes.at(1)-1);  
+		
+		outLine += "," + to_string(cs->getTotalCurrent(v1-v2));
         }else{ //component = currentSource
             outLine += "," + to_string(cs->getCurrent());
         }

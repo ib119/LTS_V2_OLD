@@ -16,6 +16,7 @@ Inductor::Inductor(string name, vector<string> args, vector<float> extraInfo)
 	nodes.push_back(n1);
 	nodes.push_back(n2);	
 	comp_current = 0;
+	prev_total_current=0;
 
 
 	
@@ -56,9 +57,11 @@ float Inductor::getCurrent() const{
 	return -comp_current; //So it's in the right direction, as current source points towards negative.
 }
 
-float Inductor::getTotalCurrent(int order) const{
+float Inductor::getTotalCurrent(float voltage, int order){
 	if(order == 1){ //companion model from Trapezoidal numerical integration method
-		return -(2.0*comp_conductance*comp_voltage + comp_current); //negative as current flows from n1 to n2 of inductor
+		float res= voltage*comp_conductance + comp_conductance*comp_voltage +prev_total_current;
+		prev_total_current = res;
+		return res; //negative as current flows from n1 to n2 of inductor
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}

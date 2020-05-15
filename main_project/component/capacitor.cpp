@@ -18,6 +18,7 @@ Capacitor::Capacitor(string name, vector<string> args, vector<float> extraInfo)
 	comp_current = 0;
 	prev_current = 0; // previous comp_current
 	prev_voltage = 0;
+	prev_total_current =0;
 	
 	if(order==1){ //Conductance of the capacitor will be the same as the companion model even at T=0 
 		comp_conductance = (2.0f*val)/extraInfo[0];
@@ -56,9 +57,11 @@ float Capacitor::getCurrent() const{
 	return comp_current;
 }
 
-float Capacitor::getTotalCurrent(int order) const{
+float Capacitor::getTotalCurrent(float voltage, int order){
 	if(order == 1){ //companion model from Trapezoidal numerical integration method
-		return 2.0*comp_conductance*comp_voltage - comp_current;
+		float res= voltage*comp_conductance -comp_conductance*comp_voltage -prev_total_current;
+		prev_total_current = res;
+		return res;	
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}
