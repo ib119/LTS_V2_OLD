@@ -1,5 +1,5 @@
-#ifndef ENUMS
-#define ENUMS
+#ifndef COMPONENTENUMS
+#define COMPONENTENUMS
 
 /*
     A collection of enums used in this project

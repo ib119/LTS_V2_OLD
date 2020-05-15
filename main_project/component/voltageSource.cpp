@@ -1,8 +1,6 @@
 #include <string>
-#include <cmath>
 #include <iostream>
 
-#include "enums.hpp"
 #include "voltageSource.hpp"
 
 VoltageSource::VoltageSource(string name, vector<string> args, vector<float> extraInfo)

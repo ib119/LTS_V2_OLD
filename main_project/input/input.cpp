@@ -1,12 +1,13 @@
-#include "input.hpp"
+#include <string>
+#include <iostream>
+#include <circuit/circuit.hpp>
+#include <component/resistor.hpp>
+#include <component/capacitor.hpp>
+#include <component/inductor.hpp>
+#include <component/voltageSource.hpp>
+#include <component/currentSource.hpp>
 
-#include "../circuit.hpp"
-#include "../resistor.hpp"
-#include "../currentSource.hpp"
-#include "../voltageSource.hpp"
-#include "../inductor.hpp"
-#include "../capacitor.hpp"
-#include "../component.hpp"
+#include "input.hpp"
 
 void readSpice(Circuit& c, istream& file){
     string title;

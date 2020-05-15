@@ -3,10 +3,9 @@
 
 #include <iostream>
 #include <vector>
-// #include <memory>
 #include <Eigen/Dense>
 
-#include "component.hpp"
+#include <component/component.hpp>
 
 using namespace std;
 using namespace Eigen;
