@@ -19,7 +19,7 @@ float Component::getCurrent() const{
    throw notSupportedByComponentException();
 }
 
-virtual float getTotalCurrent() const{
+float Component::getTotalCurrent(int order) const{
 	throw notSupportedByComponentException();
 }
 
