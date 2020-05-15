@@ -18,8 +18,8 @@ void testCircuit(stringstream& buffer){
 int main(int argc, char **argv){
     //get optional input arguments
     string outputFileName = "out.csv";
-    float timeStep = 0.02; //seconds
-    float simulationTime = 1; //seconds
+    float timeStep = 0.0001; //seconds
+    float simulationTime = 0.5; //seconds
     if(argc > 1){
         outputFileName = argv[1];
     }
