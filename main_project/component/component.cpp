@@ -1,4 +1,4 @@
-#include <customExceptionClasses/notSupportedByComponentException.hpp>
+#include <CustomExceptionClasses/notSupportedByComponentException.hpp>
 
 #include "component.hpp"
 

@@ -1,6 +1,6 @@
 #include <string>
 #include <vector>
-#include <customExceptionClasses/unsupportedIntegrationMethodOrderException.hpp>
+#include <CustomExceptionClasses/unsupportedIntegrationMethodOrderException.hpp>
 
 #include "inductor.hpp"
 

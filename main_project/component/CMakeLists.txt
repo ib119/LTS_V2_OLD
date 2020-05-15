@@ -1,0 +1,16 @@
+add_library(component
+    component.cpp
+    component.hpp
+    resistor.cpp
+    resistor.hpp
+    capacitor.cpp
+    capacitor.hpp
+    inductor.cpp
+    inductor.hpp
+    voltageSource.cpp
+    voltageSource.hpp
+    currentSource.cpp
+    currentSource.hpp
+    waveform.cpp
+    waveform.hpp
+)
