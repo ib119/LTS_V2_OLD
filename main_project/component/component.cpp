@@ -19,7 +19,7 @@ float Component::getCurrent() const{
    throw notSupportedByComponentException();
 }
 
-float Component::getTotalCurrent(int order) const{
+float Component::getTotalCurrent(float voltage,int order){
 	throw notSupportedByComponentException();
 }
 
