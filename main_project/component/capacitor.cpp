@@ -15,13 +15,13 @@ Capacitor::Capacitor(string name, vector<string> args, vector<float> extraInfo)
 	subComponents = 2;
 	nodes.push_back(n1);
 	nodes.push_back(n2);	
-	comp_current = 0;
-	prev_current = 0; // previous comp_current
-	prev_voltage = 0;
-	prev_total_current =0;
+	compCurrent = 0;
+	prevCurrent = 0; // previous comp_current
+	prevVoltage = 0;
+	prevTotalCurrent =0;
 	
 	if(order==1){ //Conductance of the capacitor will be the same as the companion model even at T=0 
-		comp_conductance = (2.0f*val)/extraInfo[0];
+		compConductance = (2.0f*val)/extraInfo[0];
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}
@@ -36,10 +36,10 @@ Capacitor::Capacitor(string _name,float c, int n1, int n2, float timeStep, int o
 	subComponents = 2;	
 	nodes.push_back(n1);
 	nodes.push_back(n2);	
-	comp_current = 0;
+	compCurrent = 0;
 	
 	if(order==1){ //Conductance of the capacitor will be the same as the companion model even at T=0 
-		comp_conductance = (2.0f*c)/timeStep;
+		compConductance = (2.0f*c)/timeStep;
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}
@@ -50,17 +50,17 @@ Capacitor::Capacitor(string _name,float c, int n1, int n2, float timeStep, int o
 }
 
 float Capacitor::getConductance() const{
-	return comp_conductance;
+	return compConductance;
 }
 
 float Capacitor::getCurrent() const{
-	return comp_current;
+	return compCurrent;
 }
 
 float Capacitor::getTotalCurrent(float voltage, int order){
 	if(order == 1){ //companion model from Trapezoidal numerical integration method
-		float res= voltage*comp_conductance -comp_conductance*comp_voltage -prev_total_current;
-		prev_total_current = res;
+		float res= voltage*compConductance - compConductance*compVoltage - prevTotalCurrent;
+		prevTotalCurrent = res;
 		return res;	
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
@@ -73,10 +73,10 @@ void Capacitor::updateVals(float newVoltage, float newCurrent, int order){
 		// comp_current = -comp_conductance*newVoltage - newCurrent;
 		// comp_current = comp_conductance*newVoltage-comp_conductance*prev_voltage - comp_current;
 		//comp_current = comp_conductance * newVoltage;		
-		comp_current = (2.0*comp_conductance*newVoltage) - comp_current; //From trapezoid companion circuit diagram for capacitor. newVoltage = Vn, 		
+		compCurrent = (2.0*compConductance*newVoltage) - compCurrent; //From trapezoid companion circuit diagram for capacitor. newVoltage = Vn, 		
 		//prev_voltage = newVoltage;		
 	//	prev_current = comp_current;		
-		comp_voltage = newVoltage;
+		compVoltage = newVoltage;
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}

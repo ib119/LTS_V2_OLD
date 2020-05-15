@@ -15,13 +15,13 @@ Inductor::Inductor(string name, vector<string> args, vector<float> extraInfo)
 	subComponents = 2;
 	nodes.push_back(n1);
 	nodes.push_back(n2);	
-	comp_current = 0;
-	prev_total_current=0;
+	compCurrent = 0;
+	prevTotalCurrent=0;
 
 
 	
 	if(order==1){ //Conductance of the inductor will be the same as the companion model even at T=0 
-		comp_conductance = extraInfo[0]/(2.0*val);
+		compConductance = extraInfo[0]/(2.0*val);
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}
@@ -36,10 +36,10 @@ Inductor::Inductor(string _name,float l, int n1, int n2, float timeStep, int ord
 	subComponents = 2;	
 	nodes.push_back(n1);
 	nodes.push_back(n2);	
-	comp_current = 0;
+	compCurrent = 0;
 	
 	if(order==1){ //Conductance of the inductor will be the same as the companion model even at T=0 
-		comp_conductance = timeStep/(2.0*l);
+		compConductance = timeStep/(2.0*l);
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}
@@ -50,17 +50,17 @@ Inductor::Inductor(string _name,float l, int n1, int n2, float timeStep, int ord
 }
 
 float Inductor::getConductance() const{
-	return comp_conductance;
+	return compConductance;
 }
 
 float Inductor::getCurrent() const{
-	return -comp_current; //So it's in the right direction, as current source points towards negative.
+	return -compCurrent; //So it's in the right direction, as current source points towards negative.
 }
 
 float Inductor::getTotalCurrent(float voltage, int order){
 	if(order == 1){ //companion model from Trapezoidal numerical integration method
-		float res= voltage*comp_conductance + comp_conductance*comp_voltage +prev_total_current;
-		prev_total_current = res;
+		float res= voltage*compConductance + compConductance*compVoltage +prevTotalCurrent;
+		prevTotalCurrent = res;
 		return res; //negative as current flows from n1 to n2 of inductor
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
@@ -70,8 +70,8 @@ float Inductor::getTotalCurrent(float voltage, int order){
 void Inductor::updateVals(float newVoltage, float newCurrent, int order){
 	if(order==1){ //using companion model for the trapezoid integration method.
 		//newCurrent = (comp_conductance*newVoltage) + comp_current; //Current into inductor = current through conductance + current source current		
-		comp_current =(2.0*comp_conductance*newVoltage)+comp_current;
-		comp_voltage = newVoltage;
+		compCurrent =(2.0*compConductance*newVoltage)+compCurrent;
+		compVoltage = newVoltage;
 	}else{
 		throw unsupportedIntegrationMethodOrderException();
 	}
