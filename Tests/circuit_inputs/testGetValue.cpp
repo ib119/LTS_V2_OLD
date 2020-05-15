@@ -1,14 +1,13 @@
 #include <iostream>
 
-#include "./../../main_project/circuit.hpp"
-#include "./../../main_project/circuit.cpp"
-#include "./../../main_project/circuitInput.cpp"
+#include <circuit/circuit.hpp>
+#include <circuit/circuit.cpp>
 
-#include "./../../main_project/component.hpp"
-#include "./../../main_project/component.cpp"
+#include <component/component.hpp>
+#include <component/component.cpp>
 
-#include "./../../main_project/resistor.hpp"
-#include "./../../main_project/resistor.cpp"
+#include <component/resistor.hpp>
+#include <component/resistor.cpp>
 
 using namespace std;
 
