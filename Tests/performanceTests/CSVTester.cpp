@@ -114,10 +114,11 @@ int main(int argc, char **argv){
 
     // how many timesteps to use
     float maxTimeStep1 = 1;
-    float minTimeStep1 = 1e-6;
-    float deltaTimeStep1 = 1e-7;
+    float minTimeStep1 = 0.00001;
+    float timeStepDivider1 = 1.1;
+    // float deltaTimeStep1 = 0.0001;
 
-    for(float timeStep{maxTimeStep1}; timeStep>=minTimeStep1; timeStep-=deltaTimeStep1){
+    for(float timeStep{maxTimeStep1}; timeStep>=minTimeStep1; timeStep/=timeStepDivider1){
         auto start = high_resolution_clock::now(); 
         timestep1(buffer);
         setupBasic(*c, timeStep);
@@ -141,11 +142,12 @@ int main(int argc, char **argv){
     
     // how many timesteps to use
     float maxTimeStep2 = 1;
-    float minTimeStep2 = 1e-6;
-    float deltaTimeStep2 = 1e-7;
+    float minTimeStep2 = 0.00001;
+    float timeStepDivider2 = 1.1;
+    // float deltaTimeStep2 = 1e-7;
 
     float smallestTimestep2 = 1e-6;
-    for(float timeStep{maxTimeStep2}; timeStep>=minTimeStep2; timeStep-=deltaTimeStep2){
+    for(float timeStep{maxTimeStep2}; timeStep>=minTimeStep2; timeStep/=timeStepDivider2){
         auto start = high_resolution_clock::now(); 
         timestep2(buffer);
         setupBasic(*c, timeStep);
